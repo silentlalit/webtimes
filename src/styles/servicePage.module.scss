@@ -1,0 +1,289 @@
+.servicePage {
+  width: 100%;
+  background-color: var(--white-color);
+}
+
+.serviceHeader {
+  width: 100%;
+  position: relative;
+  height: 500px;
+
+  .serviceImage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -0px;
+      left: 0;
+      width: 100%;
+      height: 28%;
+      background: linear-gradient(transparent, var(--white-color));
+      //   filter: blur(10px);
+      z-index: 2;
+    }
+  }
+
+  .serviceImagesContainer {
+    width: 480px;
+    height: 65px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    img {
+      object-fit: cover;
+      width: 100px;
+      height: 60px;
+      border-radius: 8px;
+    }
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  margin-top: -100px;
+  z-index: 3;
+}
+
+.serviceLeftSection {
+  width: 60%;
+
+  .serviceDetails {
+    margin-top: 80px;
+
+    h4 {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    p {
+      line-height: 30px;
+    }
+  }
+
+  .serviceHeaderTitle {
+    z-index: 2;
+    max-width: 600px;
+    color: var(--black-color);
+  }
+}
+
+.serviceReviews {
+  ul {
+    padding: 0;
+  }
+}
+
+.serviceRightSection {
+  width: 40%;
+  position: sticky;
+  top: 0;
+  right: 0;
+  margin-top: 180px;
+  border: 1px solid var(--lightGray-color);
+
+  .rightSectionTabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    button {
+      width: 100%;
+      padding: 20px 0;
+      font-size: 16px;
+      border: 1px solid var(--lightGray-color);
+    }
+
+    .activePriceBtn {
+      background-color: var(--lightGray-color);
+    }
+  }
+
+  .prizingDetails {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .prizingDetails > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+}
+
+.recommendedBox {
+  width: 100%;
+  border: 1px solid var(--lightGray-color);
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 40px;
+
+  p {
+    margin-top: 0;
+
+    span:first-child {
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .serviceLeftSection {
+    width: 100%;
+
+    .serviceDetails {
+      margin-top: 40px;
+    }
+  }
+
+  .serviceRightSection {
+    margin-top: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .serviceHeader {
+    height: 350px;
+
+    .serviceImage {
+      img {
+        object-fit: contain;
+      }
+    }
+
+    .serviceImagesContainer {
+      width: 320px;
+      height: 45px;
+
+      img {
+        width: 320px;
+        height: 45px;
+      }
+    }
+  }
+
+  .serviceLeftSection {
+    margin-top: 25px;
+  }
+}
+
+// sidear from side
+.sidebarContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: var(--black-color), $alpha: 0.5);
+  z-index: 10;
+  pointer-events: none;
+}
+.sideBar {
+  position: fixed;
+  max-width: 500px;
+  width: 100%;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: var(--white-color);
+  padding: 0 15px;
+  z-index: 20;
+  pointer-events: all;
+
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--lightGray-color);
+    padding: 25px 0;
+    background-color: var(--white-color);
+
+    svg {
+      cursor: pointer;
+    }
+  }
+
+  .orderDetails {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+
+    article {
+      border: 2px solid var(--black-color);
+      border-radius: 10px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 20px;
+
+      & > div {
+        justify-content: space-between;
+        gap: 15px;
+
+        p {
+          gap: 10px;
+        }
+      }
+
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+
+  footer {
+    position: sticky;
+    bottom: 0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: var(--lightGray-color);
+    border-top: 1px solid var(--black-color);
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--lightGray-color);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-color);
+  }
+}

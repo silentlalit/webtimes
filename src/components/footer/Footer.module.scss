@@ -1,0 +1,135 @@
+.footer {
+  display: grid;
+  padding: 80px 0;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  gap: 100px;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  li {
+    list-style: none;
+    padding: 10px 0;
+  }
+}
+
+.footer_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 900;
+    color: var(--secondary-color);
+    display: block;
+    text-align: center;
+  }
+}
+
+.useful_links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+}
+
+.footLinks {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    align-items: center;
+  }
+
+  ul {
+    margin-top: 30px;
+    max-width: 350px;
+  }
+
+  li,
+  a {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 500;
+    color: var(--exLightGray-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+
+  li:hover {
+    gap: 15px;
+    transition: all 0.3s ease;
+  }
+
+  svg {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .container {
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 50px;
+  }
+
+  .container .footer_logo_wrapper {
+    grid-area: 1 / 1 / span 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container .footer_logo_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footLinks {
+    width: 100%;
+
+    ul {
+      margin-top: 15px;
+    }
+
+    li span {
+      max-width: 250px;
+      word-wrap: break-word;
+    }
+
+    li,
+    a {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+  }
+
+  .useful_links {
+    gap: 5px;
+  }
+}

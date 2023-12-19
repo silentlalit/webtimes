@@ -1,0 +1,242 @@
+.header_wrapper {
+  position: relative;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 6px -3px rgba(0, 0, 0, 0.2);
+}
+
+.mob_header {
+  display: none;
+}
+.header {
+  width: 100%;
+  padding: 0.7rem 0;
+  background-color: rgba($color: var(--white-color), $alpha: 0.25);
+  backdrop-filter: blur(8px);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .unverifiedContainer {
+    p {
+      text-align: center;
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: -10px;
+    color: var(--gray-color);
+  }
+
+  .menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+
+    li:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--ternary-color);
+
+      a {
+        color: var(--ternary-color);
+      }
+    }
+  }
+
+  .profileIcon {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      border-radius: 100%;
+      border: 2px solid var(--primary-color);
+    }
+
+    span {
+      color: var(--ternary-color);
+      font-size: 16px;
+    }
+  }
+}
+
+.profileMenu {
+  position: absolute;
+  right: 2.5rem;
+  top: 90px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 436px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+
+  background-color: var(--white-color);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--secondary-color);
+
+  p {
+    margin-top: 0;
+    font-weight: 500;
+  }
+
+  .imageEdit {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid var(--gray-color);
+    border-radius: 100%;
+
+    img {
+      border-radius: 100%;
+    }
+
+    span {
+      position: absolute;
+      bottom: -5px;
+      right: 5px;
+      background-color: var(--white-color);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--lightGray-color);
+      }
+    }
+  }
+
+  .manageAccBtn {
+    border: 1px solid var(--secondary-color);
+    padding: 10px 25px;
+    color: var(--secondary-color);
+    font-size: 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--lightGray-color);
+    }
+  }
+
+  .btns {
+    display: flex;
+    margin-top: 10px;
+    gap: 5px;
+  }
+
+  .btns_btn {
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 25px;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px var(--exLightGray-color);
+
+    &:hover {
+      background-color: var(--lightGray-color);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    right: 1.5rem;
+  }
+}
+
+.activeLink {
+  text-decoration: underline !important;
+  text-decoration-color: var(--ternary-color) !important;
+
+  a {
+    color: var(--ternary-color) !important;
+  }
+}
+
+// Media queries
+@media screen and (max-width: 1024px) {
+  .desktop_header {
+    display: none;
+  }
+
+  .mob_header {
+    display: block;
+
+    .hembugger_menu {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 90%;
+      height: 100vh;
+      overflow-y: scroll;
+      background-color: var(--white-color);
+      padding: 0 20px;
+      transform: translate(100%);
+      transition: all 0.3s ease;
+
+      .hembugger_menu_title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        background-color: var(--white-color);
+        padding: 12px 0;
+        border-bottom: 1px solid var(--lightGray-color);
+      }
+
+      .menu {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .profileMenu {
+    bottom: calc(-100vh + 165px);
+    max-width: 80%;
+    padding: 10px;
+    top: unset;
+
+    .imageEdit {
+      margin-top: 15px;
+    }
+
+    .manageAccBtn {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+
+    .btns {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btns_btn {
+      gap: 5px;
+      padding: 10px 15px;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}

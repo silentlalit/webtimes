@@ -1,0 +1,13 @@
+"use client";
+export { default as Hero } from "./Hero/Hero";
+export { default as Projects } from "./Projects/Projects";
+export { default as Testimonials } from "./Testimonials/Testimonials";
+export { default as Skills } from "./Skills/Skills";
+export { default as FaqsSection } from "./Faqs/Faqs";
+export { default as Services } from "./Services/Services";
+export { default as Prefooter } from "./Prefooter/Prefooter";
+export { default as CommonSec } from "./CommonSec/CommonSec";
+export { default as GetStarted } from "./GetStarted/GetStarted";
+export { default as OurTeamSection } from "./OurTeamSection";
+export { default as ServiceIndustries } from "./ServiceIndustries/ServiceIndustries";
+export { default as TopClients } from "./TopClients/TopClients";

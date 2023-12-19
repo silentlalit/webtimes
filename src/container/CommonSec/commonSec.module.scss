@@ -1,0 +1,53 @@
+.comSec {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  background-color: var(--white-color);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  gap: 60px;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+.comSec_text {
+  max-width: 550px;
+  width: 100%;
+
+  p {
+    line-height: 25px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    max-width: 400px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    button {
+      margin-top: 0px !important;
+    }
+  }
+}
+
+.comSec_image {
+  max-width: 650px;
+  height: 500px;
+  width: 100%;
+  position: relative;
+
+  @media screen and (max-width: 1200px) {
+    max-width: 550px;
+    height: 380px;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 300px;
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "technologiesList": [
+    {
+      "label": "ReactJs",
+      "value": "ReactJs"
+    },
+    {
+      "label": "NextJs",
+      "value": "NextJs"
+    },
+    {
+      "label": "NodeJs",
+      "value": "NodeJs"
+    },
+    {
+      "label": "MongoDb",
+      "value": "MongoDb"
+    },
+    {
+      "label": "JavaScript",
+      "value": "JavaScript"
+    },
+    {
+      "label": "HTML5",
+      "value": "HTML5"
+    },
+    {
+      "label": "CSS + SASS",
+      "value": "CSS + SASS"
+    },
+    {
+      "label": "WordPress",
+      "value": "WordPress"
+    },
+    {
+      "label": "WordPress themes",
+      "value": "WordPress themes"
+    },
+    {
+      "label": "Figma",
+      "value": "Figma"
+    },
+    {
+      "label": "Adobe Xd",
+      "value": "Adobe Xd"
+    },
+    {
+      "label": "React Native",
+      "value": "React Native"
+    }
+  ],
+  "categoriesList": [
+    {
+      "label": "Websites",
+      "value": "Websites"
+    },
+    {
+      "label": "Web App",
+      "value": "Web App"
+    },
+    {
+      "label": "Logistics",
+      "value": "Logistics"
+    },
+    {
+      "label": "healthcare",
+      "value": "healthcare"
+    },
+    {
+      "label": "FullStack",
+      "value": "FullStack"
+    },
+    {
+      "label": "Frontend",
+      "value": "Frontend"
+    },
+    {
+      "label": "Wordpress",
+      "value": "Wordpress"
+    },
+    {
+      "label": "Taxi booking",
+      "value": "Taxi booking"
+    },
+    {
+      "label": "Shipping",
+      "value": "Shipping"
+    }
+  ],
+  "pricingList": [
+    {
+      "label": "<500",
+      "value": "<500"
+    },
+    {
+      "label": "500 - 1000",
+      "value": "500 - 1000"
+    },
+    {
+      "label": "2000+",
+      "value": "2000+"
+    }
+  ]
+}

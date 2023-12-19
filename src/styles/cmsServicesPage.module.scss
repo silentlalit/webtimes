@@ -1,0 +1,59 @@
+.cms_servicesPage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  min-height: 100vh;
+  padding-top: 1rem;
+
+  h1 {
+    border-bottom: 1px solid var(--gray-color);
+    padding-bottom: 10px;
+  }
+}
+
+.servicesListing {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--gray-color);
+  padding-top: 15px;
+}
+
+.serviceLisItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px;
+  border-radius: 5px;
+  align-items: center;
+
+  &:nth-child(2n + 1) {
+    background-color: rgba($color: #6b7688, $alpha: 0.3);
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 1px 1px var(--gray-color);
+  }
+
+  .itemTitle {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .itemEdit {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    span {
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.3);
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}

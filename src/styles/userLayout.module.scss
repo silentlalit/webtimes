@@ -1,0 +1,20 @@
+.userLayout {
+  width: 100%;
+  position: relative;
+  display: flex;
+
+  .container {
+    overflow: hidden;
+    margin-left: 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .userLayout {
+    .container {
+      overflow: hidden;
+      margin-left: 70px;
+      padding: 0 0.8rem;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.orderDetailsPage {
+  width: 100%;
+  padding: 90px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  .serviceCard {
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .serviceDetailsContainer {
+    padding: 20px 0;
+  }
+
+  .serviceDetailsCard {
+    padding: 30px 0;
+
+    summary {
+      font-size: 20px;
+      line-height: 25px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cardBoxsWrapper {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .cardBox {
+      border: 1px solid var(--primary-color);
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    .serviceCard {
+      gap: 20px;
+
+      img {
+        width: 150px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orderDetailsPage {
+    padding: 40px 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    header {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .serviceCard {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

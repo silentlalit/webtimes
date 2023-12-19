@@ -1,0 +1,85 @@
+.catAndTechPage {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.btnTitleBox {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  // background-color: var(--white-color);
+}
+
+.dataTableList {
+  .filterInputBox {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+
+    label {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      font-size: 1rem;
+      margin-top: 8px;
+      border-radius: 3px;
+    }
+  }
+
+  table {
+    margin-top: 20px;
+
+    td,
+    th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: var(--blue-color);
+      color: white;
+    }
+
+    tbody {
+      td:nth-child(1) {
+        width: 100%;
+        overflow: hidden;
+      }
+      td:nth-child(2) {
+        max-width: 200px;
+      }
+    }
+  }
+}
+
+.addTechButton {
+  position: fixed;
+  right: 100px;
+  bottom: 50px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  color: var(--green-color);
+  box-shadow: 0 0 3px var(--gray-color);
+  background-color: var(--white-color);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--lightGray-color);
+  }
+}

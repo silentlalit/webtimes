@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Petrona&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bgc-start: #f7eeff;
+  --bgc-end: #fff;
+
+  /* my custom property */
+  --font-base: "Poppins", sans-serif;
+  --primary-color: #ff5e69;
+  --secondary-color: #b16cea;
+  --ternary-color: #ff8a56;
+
+  --exLightGray-color: #fafafa;
+  /* --lightGray-color: #e3e1e1; */
+
+  --blue-color: #aeb5ff;
+  --brown-color: #46364a;
+  --red-color: #c41604;
+  --green-color: #228b22;
+
+  --black-color: #fff;
+  --white-color: #020011;
+  --gray-color: #05021a;
+  --lightGray-color: #0c0823;
+}
+
+/* =====================================================================
+===================================================================== */
+/* @layer base { */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  color: var(--black-color);
+  background-color: var(--white-color);
+  /* background: linear-gradient(to bottom, transparent, var(--bgc-end))
+    var(--bgc-start); */
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  input {
+    outline: none;
+    color: var(--white-color);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  color: var(--black-color);
+}
+
+img {
+  object-fit: contain;
+  height: revert-layer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Petrona", serif;
+  color: var(--black-color);
+}
+h1 {
+  font-size: 3rem;
+  line-height: 3.8rem;
+  font-weight: 900;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+  }
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 900;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.6rem;
+    line-height: 2.3rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  font-weight: 700;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+}
+
+h4 {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+}
+
+p {
+  margin-top: 15px;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  color: var(--black-color);
+}
+
+section {
+  padding: 80px 0 60px 0;
+
+  @media screen and (max-width: 1024px) {
+    padding: 60px 0 50px 0;
+  }
+}
+/* }
+
+@layer utilities { */
+.dContainer {
+  max-width: 1400px;
+  width: 100%;
+  margin: auto;
+  padding: 0 2.5rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+}
+
+.topTag {
+  position: relative;
+  color: var(--ternary-color);
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.topTag:after {
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  background-color: var(--ternary-color);
+}
+.topTag:before {
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  background-color: var(--ternary-color);
+}
+
+.errorStyle {
+  color: var(--red-color);
+  font-weight: 400;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
+.link {
+  color: var(--blue-color);
+  margin-top: 5px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.t-color {
+  color: var(--ternary-color);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.testimonialSwiper {
+  transition: all 0.3s ease !important;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url("/right-arrow.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .swiper-button-prev {
+    right: 75px;
+    left: auto;
+
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.testimonialSwiper .swiper-slide-active {
+  transform: scale(1.22) !important;
+  transition: all 0.3s ease !important;
+  z-index: 2;
+
+  @media screen and (max-width: 768px) {
+    transform: unset !important;
+    transition: unset !important;
+  }
+}
+
+.unread-count {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--green-color);
+  color: var(--white-color);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.vertical-timeline--animate .vertical-timeline-element-content.is-hidden {
+  visibility: unset !important;
+}
+/* } */

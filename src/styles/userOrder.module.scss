@@ -1,0 +1,69 @@
+.dataTableList {
+  width: 100%;
+  min-height: 100vh;
+  padding: 90px 20px;
+  margin-top: 20px;
+
+  .filterInputBox {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+
+    label {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      font-size: 1rem;
+      margin-top: 8px;
+      border-radius: 3px;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin-top: 20px;
+    min-width: 600px;
+
+    td,
+    th {
+      border: 1px solid var(--blue-color);
+      padding: 8px;
+      word-wrap: break-word;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--white-color);
+    }
+    tr:hover {
+      background-color: var(--lightGray-color);
+    }
+
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: var(--blue-color);
+      color: white;
+    }
+
+    tbody {
+      //   td:nth-child(1) {
+      //     width: 100%;
+      //     overflow: hidden;
+      //   }
+      //   td:nth-child(2) {
+      //     max-width: 200px;
+      //   }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dataTableList {
+    padding: 40px 0;
+  }
+}

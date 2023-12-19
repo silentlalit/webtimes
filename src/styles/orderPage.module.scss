@@ -1,0 +1,198 @@
+.orderPgae {
+  width: 100%;
+  padding: 120px 0 50px 0;
+  background-color: var(--white-color);
+
+  .container {
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+  }
+
+  header {
+    background-color: var(--exLightGray-color);
+    padding: 15px;
+    border-bottom: 1px solid var(--lightGray-color);
+
+    h4 {
+      font-size: 20px;
+      line-height: 35px;
+    }
+  }
+}
+
+.leftside {
+  width: 60%;
+}
+
+.invoiceSection {
+  width: 100%;
+  border: 1px solid var(--lightGray-color);
+  padding: 0;
+  margin-bottom: 25px;
+  border-radius: 5px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & > div {
+    padding: 15px;
+  }
+
+  p {
+    margin-top: 0;
+  }
+}
+
+.paymentSection {
+  border: 1px solid var(--lightGray-color);
+  border-radius: 5px;
+
+  .paymentContainer {
+    header {
+      background-color: unset;
+    }
+  }
+
+  header {
+    padding: 20px 15px;
+
+    label {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+  }
+}
+
+.rightSide {
+  width: 40%;
+  border: 1px solid var(--lightGray-color);
+  border-radius: 5px;
+}
+
+.rightSideContainer {
+  width: 100%;
+
+  header {
+    display: flex;
+    gap: 15px;
+
+    h4 {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .pricingDetails {
+    padding: 20px 15px;
+    background-color: var(--exLightGray-color);
+
+    & > div {
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    h5 {
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    ul {
+      list-style: none;
+      border-top: 1px solid var(--lightGray-color);
+      padding-top: 15px;
+      padding-bottom: 10px;
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      align-items: flex-start;
+
+      li {
+        gap: 15px;
+      }
+
+      svg {
+        color: var(--lightGray-color);
+      }
+
+      span {
+        font-size: 17px;
+      }
+    }
+
+    .extrasWrapper {
+      border-top: 1px solid var(--lightGray-color);
+      padding-top: 15px;
+
+      li {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      & > div {
+        gap: 15px;
+      }
+
+      h6 {
+        font-size: 17px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  footer {
+    padding: 20px;
+    background-color: var(--white-color);
+
+    & > div:first-child {
+      justify-content: space-between;
+      font-size: 30px;
+    }
+
+    & > div:last-child {
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 25px;
+
+      p {
+        font-size: 14px;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.stripePaySection {
+  form {
+    padding: 30px 15px;
+    border-bottom: 1px solid var(--lightGray-color);
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .inputBox {
+    width: 100%;
+
+    label {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .inputElement {
+      border: 1px solid var(--lightGray-color);
+      padding: 15px;
+      margin-top: 8px;
+      border-radius: 5px;
+    }
+  }
+}

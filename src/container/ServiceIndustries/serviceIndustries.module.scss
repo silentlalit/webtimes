@@ -1,0 +1,42 @@
+.serveIndustry {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  p {
+    max-width: 784px;
+    text-align: center;
+  }
+  .serveIndustry_wrapper {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .serveIndustry_box {
+    width: 180px;
+    padding: 15px 20px;
+    background-color: var(--gray-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--white-color);
+    transition: all 0.2s ease;
+
+    &:hover {
+      border: 1px solid var(--ternary-color);
+      transition: all 0.2s ease;
+    }
+
+    p {
+      margin-top: 8px;
+    }
+  }
+}

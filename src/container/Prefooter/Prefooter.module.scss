@@ -1,0 +1,41 @@
+.prefooter {
+  width: 100%;
+  background-size: 100% 100%;
+  background-image: linear-gradient(270deg, #cc066f 0%, #791e97 100%);
+  padding: 60px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2,
+  p {
+    color: var(--white-color);
+    max-width: 772px;
+  }
+
+  p {
+    opacity: 0.9;
+  }
+}
+
+.btnBox {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+
+  @media screen and (max-width: 500px) {
+    margin-top: 40px;
+    gap: 25px;
+
+    button {
+      margin-top: 0 !important;
+    }
+  }
+}
