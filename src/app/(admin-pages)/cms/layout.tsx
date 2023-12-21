@@ -1,12 +1,16 @@
+"use client";
+
 import React from "react";
 import { GoHome, GoProject } from "react-icons/go";
 import { MdOutlineCategory, MdOutlineContactPage } from "react-icons/md";
 import { GrServices } from "react-icons/gr";
 import { SiAboutdotme, SiSkillshare } from "react-icons/si";
-import { Sidebar } from "@/components";
+import { LoadingUser, Sidebar } from "@/components";
 
 import styles from "@/styles/cmsLayout.module.scss";
 import { GiSkills } from "react-icons/gi";
+import { useAppSelector } from "@/redux/hook";
+import { RootState } from "@/redux/store/store";
 const { cmsDashboard, container, dashboard } = styles;
 
 const menu = [
@@ -53,13 +57,23 @@ const menu = [
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated } = useAppSelector(
+    (state: RootState) => state.authUser
+  );
+
   return (
     <div className={cmsDashboard}>
-      <Sidebar menu={menu} />
+      {!isAuthenticated ? (
+        <LoadingUser />
+      ) : (
+        <>
+          <Sidebar menu={menu} />
 
-      <div className={`${container} dContainer`}>
-        <div className={dashboard}>{children}</div>
-      </div>
+          <div className={`${container} dContainer`}>
+            <div className={dashboard}>{children}</div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

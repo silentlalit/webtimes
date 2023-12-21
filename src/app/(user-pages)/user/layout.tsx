@@ -7,9 +7,10 @@ import { BsChatLeft } from "react-icons/bs";
 import { MdOutlineContacts } from "react-icons/md";
 
 import styles from "@/styles/userLayout.module.scss";
-import { Loader, Sidebar } from "@/components";
+import { Loader, LoadingUser, Sidebar } from "@/components";
 import { SocketProvider } from "@/providers/socketIo";
 import { useAppSelector } from "@/redux/hook";
+import { RootState } from "@/redux/store/store";
 // import { useAppDispatch, useAppSelector } from "@/redux/hook";
 // import {
 //   AddDirectConversation,
@@ -48,15 +49,14 @@ const menu = [
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { logggedInUser } = useAppSelector((state: any) => state.authUser);
+  const { isAuthenticated } = useAppSelector(
+    (state: RootState) => state.authUser
+  );
 
   return (
     <div className={userLayout}>
-      {!logggedInUser?.isAuthenticated ? (
-        <div style={{ margin: "auto" }}>
-          <h4>user is authenticating... Please wait</h4>
-          <Loader />
-        </div>
+      {!isAuthenticated ? (
+        <LoadingUser />
       ) : (
         <>
           <Sidebar menu={menu} />

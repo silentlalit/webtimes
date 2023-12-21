@@ -1,19 +1,11 @@
-"use client";
-
-import { Fragment, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { headers } from "next/headers";
 import "@/app/globals.css";
 import { Footer, Header } from "@/components";
 import { Toaster } from "react-hot-toast";
 
 // redux ----------------
 import StoreProvider from "@/providers/StoreProvider";
-import { loadUser } from "@/redux/slices/authSlice";
-import { fetchServices } from "@/redux/slices/servicesSlice";
-import { fetchProjects } from "@/redux/slices/projectsSlice";
-import { fetchSkills } from "@/redux/slices/skillsSlice";
-import { fetchTestimonials } from "@/redux/slices/testimonialsSlice";
-import { useAppDispatch } from "@/redux/hook";
+import App from "./App";
 
 // Skeleton styles
 import "react-loading-skeleton/dist/skeleton.css";
@@ -45,12 +37,9 @@ const toastOptions = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const pathname = usePathname();
+function RootLayout({ children }: { children: React.ReactNode }) {
+  const heads = headers();
+  const pathname = heads.get("next-url");
 
   return (
     <html>
@@ -82,16 +71,4 @@ export default function RootLayout({
   );
 }
 
-const App = ({ children }: { children: React.ReactNode }) => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(loadUser());
-    dispatch(fetchServices());
-    dispatch(fetchProjects());
-    dispatch(fetchSkills());
-    dispatch(fetchTestimonials());
-  }, [dispatch]);
-
-  return <Fragment>{children}</Fragment>;
-};
+export default RootLayout;

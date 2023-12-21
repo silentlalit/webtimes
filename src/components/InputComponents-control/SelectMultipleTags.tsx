@@ -10,16 +10,17 @@ const styles = {
     margin: 10,
     marginLeft: 0,
   },
-  defaultStyle: {
-    padding: "8px 15px",
-    borderRadius: 10,
-    fontSize: 16,
-    fontWeight: "500",
-    width: "100%",
-  },
+  // defaultStyle: {
+  //   padding: "8px 15px",
+  //   borderRadius: 10,
+  //   fontSize: 16,
+  //   fontWeight: "500",
+  //   width: "100%",
+  //   backgroundColor: "var(--black-color)",
+  // },
 };
 
-const { defaultWrapperStyle, defaultStyle } = styles;
+const { defaultWrapperStyle } = styles;
 
 function SelectMultipleTags({
   control,
@@ -59,7 +60,17 @@ function SelectMultipleTags({
               onChange(option);
             }}
             options={options}
-            styles={{ ...defaultStyle, ...style }}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 4,
+              backgroundColor: "hsl(0, 0%, 100%)",
+              border: "1px solid hsl(0, 0%, 80%)",
+              colors: {
+                ...theme.colors,
+                neutral0: "var(--white-color)",
+                primary25: "var(--gray-color)",
+              },
+            })}
             {...props}
           />
           {message && <p className="errorStyle">{message}</p>}

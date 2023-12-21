@@ -288,3 +288,18 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .projectShowcase {
+    flex-direction: column;
+  }
+
+  .projectsFilters {
+    background-color: var(--white-color);
+    display: none;
+  }
+
+  .projectsSection_wrapper {
+    width: 100%;
+  }
+}

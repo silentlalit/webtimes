@@ -58,9 +58,17 @@ function PasswordInput({
               {...props}
             />
             {showPassword ? (
-              <FaRegEye size={18} onClick={() => setShowPassword(false)} />
+              <FaRegEye
+                size={18}
+                color="var(--white-color)"
+                onClick={() => setShowPassword(false)}
+              />
             ) : (
-              <FaRegEyeSlash size={18} onClick={() => setShowPassword(true)} />
+              <FaRegEyeSlash
+                size={18}
+                color="var(--white-color)"
+                onClick={() => setShowPassword(true)}
+              />
             )}
           </div>
           {message && <p className="errorStyle">{message}</p>}

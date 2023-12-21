@@ -32,6 +32,21 @@ const clients: Client[] = [
 ];
 
 const ServiceIndustries = () => {
+  const breakPointsObj = {
+    300: {
+      slidesPerView: 1,
+      spaceBetween: 0,
+    },
+    500: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  };
+
   return (
     <section className={topClinets}>
       <div className={`${container} dContainer`}>
@@ -49,7 +64,8 @@ const ServiceIndustries = () => {
           scrollbar={{ draggable: true }}
           loop={true}
           modules={[Autoplay]}
-          className={topClinets_wrapper}>
+          className={topClinets_wrapper}
+          breakpoints={breakPointsObj}>
           {clients.map(({ Icon, label }: any, idx: number) => (
             <SwiperSlide key={idx + label} className={topClinets_box}>
               <Image src={Icon} alt={label} width={200} height={100} />

@@ -40,3 +40,17 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .serveIndustry {
+    .serveIndustry_wrapper {
+      overflow-x: auto;
+      justify-content: flex-start;
+      flex-wrap: initial;
+    }
+
+    .serveIndustry_box {
+      min-width: 180px;
+    }
+  }
+}

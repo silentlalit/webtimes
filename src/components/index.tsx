@@ -10,6 +10,7 @@ export { default as Tag } from "./Tag";
 export { default as Background } from "./customComponents/Background";
 export { default as ReturnToTop } from "./customComponents/ReturnToTop";
 export { default as Loader } from "./loader/Loader";
+export { default as LoadingUser } from "./LoadingUser/LoadingUser";
 export { default as ProfileIcon } from "./profileIcon/ProfileIcon";
 
 export { default as UploadFiles } from "./uploadFiles/UploadFiles";

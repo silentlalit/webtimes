@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components";
@@ -18,7 +18,6 @@ const {
   container,
   logo,
   menu,
-  hembugger,
   hembugger_menu,
   hembugger_menu_title,
   profileIcon,
@@ -40,6 +39,12 @@ const Header = () => {
   const [openProfile, setOpenProfile] = useState(false);
   const pathname = usePathname();
   const [openMobMenu, setOpenMobMenu] = useState(false);
+
+  console.log("header");
+
+  useEffect(() => {
+    setOpenMobMenu(false);
+  }, [pathname]);
 
   return (
     <>
@@ -84,14 +89,7 @@ const Header = () => {
                 </li>
               ) : (
                 <li>
-                  <Link href={"/userAuth/login"}>
-                    Login/SignIn
-                    {/* <Button
-                    title=""
-                    btnType="type3"
-                    style={{ fontWeight: 400, color: bla }}
-                  /> */}
-                  </Link>
+                  <Link href={"/userAuth/login"}>Login/SignIn</Link>
                 </li>
               )}
 
@@ -133,7 +131,7 @@ const Header = () => {
 
             <RiMenu3Line
               size={30}
-              color="var(--secondary-color)"
+              color="var(--black-color)"
               style={{ cursor: "pointer" }}
               onClick={() => setOpenMobMenu(true)}
             />
@@ -166,7 +164,12 @@ const Header = () => {
               />
             </div>
 
-            <div className="flex justify-between h-full flex-col">
+            <div
+              className="flex h-full flex-col"
+              style={{
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+              }}>
               <ul className={menu} style={{ margin: "20px 0" }}>
                 {mainMenu.map(({ name, link }, idx) => (
                   <li
@@ -185,7 +188,6 @@ const Header = () => {
               <ul
                 className={menu}
                 style={{
-                  borderTop: "1px solid var(--lightGray-color)",
                   backgroundColor: "var(--white-color)",
                   position: "sticky",
                   bottom: 0,
@@ -193,6 +195,7 @@ const Header = () => {
                 }}>
                 {isAuthenticated ? (
                   <li
+                    style={{ borderTop: "1px solid var(--lightGray-color)" }}
                     className={profileIcon}
                     onClick={() => setOpenProfile(!openProfile)}>
                     <Image
@@ -205,7 +208,9 @@ const Header = () => {
                   </li>
                 ) : (
                   <li>
-                    <Link href={"/userAuth/login"}>Login/SignIn</Link>
+                    <Link href={"/userAuth/login"}>
+                      Login {"  "} | {"  "} SignIn
+                    </Link>
                   </li>
                 )}
               </ul>

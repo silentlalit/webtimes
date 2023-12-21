@@ -1,8 +1,9 @@
 .cmsDashboard {
   width: 100%;
   position: relative;
-  // padding-top: 90px;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: grid;
 }
 
 .container {

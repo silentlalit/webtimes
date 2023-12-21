@@ -22,6 +22,7 @@ const styles = {
     backgroundColor: "hsl(0, 0%, 100%)",
     border: "1px solid hsl(0, 0%, 80%)",
     height: 150,
+    color: "var(--white-color)",
   },
 };
 

@@ -71,7 +71,6 @@ const Page = () => {
   }, [userId, refreshOrders, dispatch]);
 
   useEffect(() => {
-    console.log("{ user_id }", userId);
     userId &&
       socket?.emit(
         "get_conversations_list",
@@ -159,18 +158,22 @@ const Page = () => {
           </div>
 
           {isConnected ? (
-            conversations?.map((conv: any) => (
-              <Link
-                key={conv.id}
-                href={{
-                  pathname: "/user/chats",
-                  query: { room_id: conv.id },
-                }}>
-                <div key={conv.id} style={{ cursor: "pointer" }}>
-                  <ProfileIcon name={conv.chat_name} img={conv.img} />
-                </div>
-              </Link>
-            ))
+            conversations.length ? (
+              conversations.map((conv: any) => (
+                <Link
+                  key={conv.id}
+                  href={{
+                    pathname: "/user/chats",
+                    query: { room_id: conv.id },
+                  }}>
+                  <div key={conv.id} style={{ cursor: "pointer" }}>
+                    <ProfileIcon name={conv.chat_name} img={conv.img} />
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <p>No Active Chats, Create one to start</p>
+            )
           ) : (
             <p>Please wait, connecting....</p>
           )}
@@ -258,36 +261,46 @@ const Page = () => {
           isOpen={isOpenDialong}
           onClose={() => setIsOpenDialong(false)}>
           <div>
-            {orders?.map(({ _id, projectName, service }: any) => (
-              <div
-                key={_id}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  border: "1px solid var(--lightGray-color)",
-                  borderRadius: 8,
-                  padding: "10px",
-                  margin: "10px 0",
-                }}>
-                <div>
-                  <h4>{projectName}</h4>
-                  <h6>{service.name}</h6>
+            {orders.length ? (
+              orders.map(({ _id, projectName, service }: any) => (
+                <div
+                  key={_id}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    border: "1px solid var(--lightGray-color)",
+                    borderRadius: 8,
+                    padding: "10px",
+                    margin: "10px 0",
+                  }}>
+                  <div>
+                    <h4>{projectName}</h4>
+                    <h6>{service.name}</h6>
+                  </div>
+                  <Button
+                    title="Select"
+                    btnType="type3"
+                    onClick={() =>
+                      AddNewChat(
+                        _id,
+                        projectName,
+                        userId,
+                        `${process.env.NEXT_PUBLIC_ADMIN_ID}`
+                      )
+                    }
+                  />
                 </div>
-                <Button
-                  title="Select"
-                  btnType="type3"
-                  onClick={() =>
-                    AddNewChat(
-                      _id,
-                      projectName,
-                      userId,
-                      `${process.env.NEXT_PUBLIC_ADMIN_ID}`
-                    )
-                  }
-                />
-              </div>
-            ))}
+              ))
+            ) : (
+              <>
+                <p>
+                  No active order is present to start the conversation about
+                  related projects
+                </p>
+                <p>Please Contact us to start project with us.</p>
+              </>
+            )}
           </div>
         </Modal>
       )}

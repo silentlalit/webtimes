@@ -1,19 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import toast from "react-hot-toast";
 import { Button, PasswordInput, TextInput } from "@/components";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { clearErrorMsg, login } from "@/redux/slices/authSlice";
 import styles from "@/styles/userLoginSignup.module.scss";
-
-// import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const { main, container } = styles;
 
@@ -60,12 +58,13 @@ const Page = () => {
   }, [isAuthenticated, isDirty, dispatch, push]);
 
   const loginUser = async (data: any) => {
-    const { payload }: any = await dispatch(login(data));
-
-    if (payload.success) {
+    try {
+      const { payload }: any = await dispatch(login(data));
       toast.success(payload.message);
       push("/");
-    } else toast.error(payload.error);
+    } catch (error: any) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -137,30 +136,6 @@ const Page = () => {
           <span>Or Sign in with Google</span>
           <span style={{ flex: 1, height: 1, backgroundColor: "gray" }} />
         </div>
-        <br />
-
-        {/* <div>
-                    {session?.user ? (
-                        <Button
-                            title="Log Out"
-                            style={{ backgroundImage: 'unset', color: 'var(--black-color)', width: '100%' }}
-                            onClick={signOut}
-                        />
-                    ) : (
-                        <>
-                            {providers && Object.values(providers).map((provider: any) => (
-                                <Button
-                                    title="Sign In with Google"
-                                    loading={false}
-                                    type="button"
-                                    key={provider.name}
-                                    onClick={() => signIn(provider.id)}
-                                    style={{ width: '100%' }}
-                                />
-                            ))}
-                        </>
-                    )}
-                </div> */}
       </div>
     </main>
   );

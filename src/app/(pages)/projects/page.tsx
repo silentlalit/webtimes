@@ -17,7 +17,7 @@ import { Project } from "@/utils/interface";
 import Filters from "./Filters";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { fetchProjects } from "@/redux/slices/projectsSlice";
-import { Modal, Tag } from "@/components";
+import { Button, Modal, Tag } from "@/components";
 
 const {
   main,
@@ -130,11 +130,7 @@ const ProjectsPage = () => {
 
           <div className={projectShowcase}>
             <div className={projectsFilters}>
-              <Filters
-                filters={filters}
-                setFilters={setFilters}
-                clearFilters={clearFilters}
-              />
+              <Filters filters={filters} setFilters={setFilters} />
             </div>
 
             <div className={projectsSection_wrapper}>

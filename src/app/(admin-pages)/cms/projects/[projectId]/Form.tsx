@@ -27,21 +27,21 @@ const defaultValues = {
   link: "",
 };
 
-type ProjectType = {
-  title: string;
-  description: string;
-  technologies: {
-    value?: string | undefined;
-    label?: string | undefined;
-  }[];
-  categories: {
-    value?: string | undefined;
-    label?: string | undefined;
-  }[];
-  thumbnail: any;
-  github: string | undefined;
-  link: string | undefined;
-};
+// type ProjectType = {
+//   title: string;
+//   description: string;
+//   technologies: {
+//     value?: string | undefined;
+//     label?: string | undefined;
+//   }[];
+//   categories: {
+//     value?: string | undefined;
+//     label?: string | undefined;
+//   }[];
+//   thumbnail: string;
+//   github?: string | undefined;
+//   link?: string | undefined;
+// };
 
 const Form = ({ projectId, project }: any) => {
   const { technologiesList, categoriesList } = useAppSelector(

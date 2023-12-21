@@ -55,7 +55,10 @@ const Page = () => {
       <div className={container}>
         <div style={{ textAlign: "center" }}>
           <h1>
-            Sign up to <Link href="/">Webtimes</Link>
+            Sign up to{" "}
+            <Link href="/" className="link">
+              Webtimes
+            </Link>
           </h1>
           <p>Welcome Back! Please enter your signup details</p>
         </div>
@@ -89,7 +92,6 @@ const Page = () => {
           name="password"
           placeholder="Password"
           error={errors.password}
-          type="password"
         />
 
         <PasswordInput
@@ -97,14 +99,14 @@ const Page = () => {
           name="confirmPassword"
           placeholder="Confirm Password"
           error={errors.confirmPassword}
-          type="password"
         />
         {isError && <p className="errorStyle">{msg}</p>}
 
         <Button
           type="submit"
           title="Signup"
-          wrapperStyle={{ marginTop: 25, width: "100%" }}
+          wrapperStyle={{ marginTop: 25 }}
+          style={{ width: "100%" }}
           onClick={handleSubmit(signupUser)}
           loading={loading}
           disabled={loading}

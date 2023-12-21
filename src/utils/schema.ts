@@ -109,7 +109,8 @@ export const ProjectSchema = yup.object({
     )
     .required("Project technologies is required, (Atleast one.)"),
   thumbnail: yup
-    .mixed()
+    .string()
+    .required("thumbnail is required")
     .test("required", "Please select a thumbnail.", (value: any) => {
       return value;
     }),

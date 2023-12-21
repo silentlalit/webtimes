@@ -54,7 +54,7 @@ function Page({ params }: any) {
   };
 
   return (
-    <div className="cms_editService">
+    <div className="cms_editService py-4">
       <h1>Edit Project</h1>
       {projectId !== "_new" && loading ? (
         <Loader />
@@ -72,17 +72,19 @@ function Page({ params }: any) {
         </div>
       )}
 
-      <Modal
-        isOpen={isImageModalOpen}
-        onClose={() => setIsImageModalOpen(false)}
-        title="Seavice Images">
-        <UploadFiles
-          images={project?.images}
-          uploadImages={uploadImagesHandle}
-          deleteImage={deleteImageHandle}
-          replaceImage={replaceImageHandle}
-        />
-      </Modal>
+      {isImageModalOpen && (
+        <Modal
+          isOpen={isImageModalOpen}
+          onClose={() => setIsImageModalOpen(false)}
+          title="Seavice Images">
+          <UploadFiles
+            images={project?.images}
+            uploadImages={uploadImagesHandle}
+            deleteImage={deleteImageHandle}
+            replaceImage={replaceImageHandle}
+          />
+        </Modal>
+      )}
     </div>
   );
 }

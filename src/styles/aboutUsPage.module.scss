@@ -199,7 +199,7 @@
     border: 1px solid var(--secondary-color);
 
     @media screen and (max-width: 500px) {
-      padding-left: 60px;
+      padding: 25px 20px 25px 50px;
     }
 
     h2 {
@@ -216,12 +216,11 @@
 
       @media screen and (max-width: 500px) {
         width: 70px;
-        height: 100px;
+        height: 90px;
       }
 
       span {
         margin: auto;
-        color: var(--white-color);
       }
     }
   }

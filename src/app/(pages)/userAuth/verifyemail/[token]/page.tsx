@@ -34,7 +34,7 @@ const Page = ({ params }: any) => {
     };
 
     if (token?.length) verifyEmail(token);
-  }, [token, dispatch, push]);
+  }, [token, push]);
 
   useEffect(() => {
     if (isAuthenticated) push("/");

@@ -1,6 +1,5 @@
 import { ClipLoader } from "react-spinners";
 import styles from "./Button.module.scss";
-import { ReactPropTypes } from "react";
 
 const { button, hidden, spinner, type2Button, type3Button } = styles;
 

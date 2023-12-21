@@ -76,6 +76,7 @@ function SingleFileSelect({
               style={{
                 width: 200,
                 height: 100,
+                position: "relative",
               }}>
               <Image
                 src={flag ? image : url + image}

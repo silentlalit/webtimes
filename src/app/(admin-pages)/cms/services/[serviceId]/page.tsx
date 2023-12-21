@@ -66,7 +66,7 @@ function Page({ params }: any) {
   };
 
   return (
-    <div className="p-3">
+    <div className="py-4">
       <h2>{serviceId !== "_new" ? "Update Service" : "Create Service"}</h2>
       <hr />
 
