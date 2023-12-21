@@ -43,9 +43,13 @@ function SelectTags({
 }: any) {
   const [selectedTags, setSelectedTags] = useState<Option[]>(selected);
 
+  // useEffect(() => {
+  //   setSelectedTags(selected);
+  // }, [selected]);
+
   useEffect(() => {
-    setSelectedTags(selected);
-  }, [selected]);
+    onChange(selectedTags);
+  }, [selectedTags]);
 
   const isSelected = (item: Option) =>
     selectedTags.find((option) => option.value === item.value);
@@ -61,10 +65,6 @@ function SelectTags({
       isSelected(option) ? setSelectedTags([]) : setSelectedTags([option]);
     }
   };
-
-  useEffect(() => {
-    onChange(selectedTags);
-  }, [selectedTags, onChange]);
 
   return (
     <div style={{ ...defaultWrapperStyle, ...wrapperStyle }}>

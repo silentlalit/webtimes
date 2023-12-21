@@ -30,25 +30,25 @@ const OrderDetailsCard = ({ order }: any) => {
         <ul>
           <li className="flex">
             <span>
-              <TiTick size={25} />
+              <TiTick size={25} color="var(--black-color)" />
             </span>
             <span>{orderDetails?.type}</span>
           </li>
           <li className="flex">
             <span>
-              <TiTick size={25} />
+              <TiTick size={25} color="var(--black-color)" />
             </span>
             <span>{orderDetails?.about}</span>
           </li>
           <li className="flex">
             <span>
-              <TiTick size={25} />
+              <TiTick size={25} color="var(--black-color)" />
             </span>
             <span>{orderDetails?.revisions} revisions</span>
           </li>
           <li className="flex">
             <span>
-              <TiTick size={25} />
+              <TiTick size={25} color="var(--black-color)" />
             </span>
             <span>{orderDetails?.delivery} days delivery</span>
           </li>
@@ -59,7 +59,7 @@ const OrderDetailsCard = ({ order }: any) => {
             <li className="flex" key={idx}>
               <div className="flex">
                 <span>
-                  <TiTick size={25} />
+                  <TiTick size={25} color="var(--black-color)" />
                 </span>
                 <span>{ex?.name}</span>
               </div>

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import {
   CommonSec,
   FaqsSection,
@@ -13,9 +15,25 @@ import {
 } from "@/container";
 import styles from "@/styles/Home.module.scss";
 
+// redux
+import { useAppDispatch } from "@/redux/hook";
+import { fetchServices } from "@/redux/slices/servicesSlice";
+import { fetchProjects } from "@/redux/slices/projectsSlice";
+import { fetchSkills } from "@/redux/slices/skillsSlice";
+import { fetchTestimonials } from "@/redux/slices/testimonialsSlice";
+
 const { homepage } = styles;
 
 const HomePage = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchServices());
+    dispatch(fetchProjects());
+    dispatch(fetchSkills());
+    dispatch(fetchTestimonials());
+  }, [dispatch]);
+
   return (
     <div className={homepage}>
       <Hero />
@@ -38,6 +56,7 @@ const HomePage = () => {
       <Skills />
       <Testimonials />
       <FaqsSection />
+
       <Prefooter />
     </div>
   );

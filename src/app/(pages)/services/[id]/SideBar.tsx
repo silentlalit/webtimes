@@ -40,7 +40,7 @@ const SideBar = ({ service, searchParams, setIsOpenSidebar, style }: any) => {
   const orderHandler = () => {
     localStorage.setItem("latestOrder", JSON.stringify(order));
     push(
-      `services/order?id=${service?._id}&pricingIdx=${
+      `/services/order?id=${service?._id}&pricingIdx=${
         searchParams.pricingIdx || 0
       }`
     );

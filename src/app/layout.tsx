@@ -1,18 +1,22 @@
-import { headers } from "next/headers";
+"use client";
+
+import React, { Fragment, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { Toaster } from "react-hot-toast";
+
 import "@/app/globals.css";
 import { Footer, Header } from "@/components";
-import { Toaster } from "react-hot-toast";
 
 // redux ----------------
 import StoreProvider from "@/providers/StoreProvider";
-import App from "./App";
+import { loadUser } from "@/redux/slices/authSlice";
+import { useAppDispatch } from "@/redux/hook";
 
 // Skeleton styles
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-vertical-timeline-component/style.min.css";
 // Import Swiper styles
 import "swiper/css";
-// import "swiper/swiper.min.css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
@@ -38,8 +42,7 @@ const toastOptions = {
 };
 
 function RootLayout({ children }: { children: React.ReactNode }) {
-  const heads = headers();
-  const pathname = heads.get("next-url");
+  const pathname = usePathname();
 
   return (
     <html>
@@ -58,13 +61,6 @@ function RootLayout({ children }: { children: React.ReactNode }) {
               <Footer />
             </>
           )}
-
-          <Toaster
-            position="top-center"
-            reverseOrder={false}
-            gutter={8}
-            toastOptions={toastOptions}
-          />
         </StoreProvider>
       </body>
     </html>
@@ -72,3 +68,23 @@ function RootLayout({ children }: { children: React.ReactNode }) {
 }
 
 export default RootLayout;
+
+const App = ({ children }: { children: React.ReactNode }) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
+  return (
+    <Fragment>
+      {children}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={toastOptions}
+      />
+    </Fragment>
+  );
+};

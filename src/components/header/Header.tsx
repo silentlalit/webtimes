@@ -40,8 +40,6 @@ const Header = () => {
   const pathname = usePathname();
   const [openMobMenu, setOpenMobMenu] = useState(false);
 
-  console.log("header");
-
   useEffect(() => {
     setOpenMobMenu(false);
   }, [pathname]);
@@ -88,7 +86,11 @@ const Header = () => {
                   <span>{logggedInUser.username}</span>
                 </li>
               ) : (
-                <li>
+                <li
+                  className={`${
+                    pathname === ("/userAuth/login" || "/userAuth/signup") &&
+                    activeLink
+                  }`}>
                   <Link href={"/userAuth/login"}>Login/SignIn</Link>
                 </li>
               )}
@@ -165,10 +167,11 @@ const Header = () => {
             </div>
 
             <div
-              className="flex h-full flex-col"
+              className="flex flex-col"
               style={{
                 justifyContent: "space-between",
                 alignItems: "flex-start",
+                height: "calc(100vh - 90px)",
               }}>
               <ul className={menu} style={{ margin: "20px 0" }}>
                 {mainMenu.map(({ name, link }, idx) => (

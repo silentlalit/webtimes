@@ -7,12 +7,16 @@
     display: flex;
     gap: 50px;
     justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   header {
-    background-color: var(--exLightGray-color);
+    background-color: var(--gray-color);
     padding: 15px;
-    border-bottom: 1px solid var(--lightGray-color);
+    border-bottom: 1px solid var(--gray50-color);
 
     h4 {
       font-size: 20px;
@@ -27,7 +31,7 @@
 
 .invoiceSection {
   width: 100%;
-  border: 1px solid var(--lightGray-color);
+  border: 1px solid var(--gray50-color);
   padding: 0;
   margin-bottom: 25px;
   border-radius: 5px;
@@ -48,7 +52,7 @@
 }
 
 .paymentSection {
-  border: 1px solid var(--lightGray-color);
+  border: 1px solid var(--gray50-color);
   border-radius: 5px;
 
   .paymentContainer {
@@ -70,7 +74,7 @@
 
 .rightSide {
   width: 40%;
-  border: 1px solid var(--lightGray-color);
+  border: 1px solid var(--gray50-color);
   border-radius: 5px;
 }
 
@@ -89,7 +93,7 @@
 
   .pricingDetails {
     padding: 20px 15px;
-    background-color: var(--exLightGray-color);
+    background-color: var(--white-color);
 
     & > div {
       justify-content: space-between;
@@ -103,7 +107,7 @@
 
     ul {
       list-style: none;
-      border-top: 1px solid var(--lightGray-color);
+      border-top: 1px solid rgba($color: var(--gray50-color), $alpha: 0.5);
       padding-top: 15px;
       padding-bottom: 10px;
       display: flex;
@@ -116,7 +120,7 @@
       }
 
       svg {
-        color: var(--lightGray-color);
+        color: var(--black-color);
       }
 
       span {
@@ -125,7 +129,7 @@
     }
 
     .extrasWrapper {
-      border-top: 1px solid var(--lightGray-color);
+      border-top: 1px solid var(--gray50-color);
       padding-top: 15px;
 
       li {
@@ -146,7 +150,7 @@
 
   footer {
     padding: 20px;
-    background-color: var(--white-color);
+    background-color: var(--gray-color);
 
     & > div:first-child {
       justify-content: space-between;

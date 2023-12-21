@@ -51,17 +51,19 @@ const InvoiceDetailsCard = ({ order, user }: any) => {
         </div>
       </section>
 
-      <Modal
-        title={"Edit information for invoice"}
-        isOpen={isOpenModal}
-        onClose={() => setIsOpenModal(false)}>
-        <FormInfo
-          order={order}
-          user={user}
-          dispatch={dispatch}
-          setIsOpenModal={setIsOpenModal}
-        />
-      </Modal>
+      {isOpenModal && (
+        <Modal
+          title={"Edit information for invoice"}
+          isOpen={isOpenModal}
+          onClose={() => setIsOpenModal(false)}>
+          <FormInfo
+            order={order}
+            user={user}
+            dispatch={dispatch}
+            setIsOpenModal={setIsOpenModal}
+          />
+        </Modal>
+      )}
     </>
   );
 };

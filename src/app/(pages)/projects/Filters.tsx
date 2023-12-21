@@ -1,10 +1,12 @@
+"use client";
+
 import React from "react";
 
 import styles from "@/styles/projectsPage.module.scss";
 import { Button, Rating, SelectTags1, SelectTags2 } from "@/components";
 import data from "@/utils/static/static.json";
 
-const { filterBox, filterBoxWrapper } = styles;
+const { projectsFilters, filterBox, filterBoxWrapper } = styles;
 
 const Filters = ({ filters, setFilters, clearFilters }: any) => {
   const { categoriesList, technologiesList, pricingList } = data;
@@ -12,7 +14,7 @@ const Filters = ({ filters, setFilters, clearFilters }: any) => {
   const { categories, technologies, pricing, rating } = filters;
 
   return (
-    <>
+    <div className={projectsFilters}>
       <div
         style={{
           display: "flex",
@@ -88,7 +90,7 @@ const Filters = ({ filters, setFilters, clearFilters }: any) => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -43,7 +43,7 @@ const StripePay = ({ order, openPayment, setOpenPayment }: any) => {
         },
         padding: "10px",
         innerHeight: 50,
-        border: "1px solid #e3e1e1",
+        border: "1px solid var(--exLightGray-color)",
       },
       invalid: {
         iconColor: "#c41604",

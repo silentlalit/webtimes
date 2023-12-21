@@ -14,42 +14,46 @@ const ServiceHeader = ({ images }: { images: string[] }) => {
 
   return (
     <div className={serviceHeader}>
-      <Swiper
-        loop={true}
-        navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className={serviceImage}>
-        {images?.map((image, idx) => (
-          <SwiperSlide key={idx}>
-            <Image
-              src={`/upload/services/${image}`}
-              fill
-              sizes="100%"
-              alt={`service${idx}`}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        loop={true}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className={serviceImagesContainer}>
-        {images?.map((image, idx) => (
-          <SwiperSlide key={idx}>
-            <Image
-              src={`/upload/services/${image}`}
-              fill
-              alt={`service${idx}`}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {images.length && (
+        <>
+          <Swiper
+            loop={true}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className={serviceImage}>
+            {images?.map((image, idx) => (
+              <SwiperSlide key={idx}>
+                <Image
+                  src={`/upload/services/${image}`}
+                  fill
+                  sizes="100vw"
+                  alt={`service${idx}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={10}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className={serviceImagesContainer}>
+            {images?.map((image, idx) => (
+              <SwiperSlide key={idx}>
+                <Image
+                  src={`/upload/services/${image}`}
+                  fill
+                  alt={`service${idx}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </>
+      )}
     </div>
   );
 };

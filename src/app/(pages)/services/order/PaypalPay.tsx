@@ -25,7 +25,7 @@ const PaypalPay = ({ order, openPayment, setOpenPayment }: any) => {
 
       {openPayment === "paypalPay" ? (
         <form>
-          <input type="text" />
+          <input type="text" value="Pay here" />
         </form>
       ) : null}
     </div>
