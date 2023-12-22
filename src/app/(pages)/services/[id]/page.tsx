@@ -45,7 +45,7 @@ const Page = ({ params, searchParams }: any) => {
     return () => {
       dispatch(clearService());
     };
-  }, [dispatch, id]);
+  }, [dispatch, id, service?._id]);
 
   if (loading)
     return (
