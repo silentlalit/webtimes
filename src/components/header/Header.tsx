@@ -171,7 +171,7 @@ const Header = () => {
               style={{
                 justifyContent: "space-between",
                 alignItems: "flex-start",
-                height: "calc(100vh - 90px)",
+                height: "calc(100vh - 115px)",
               }}>
               <ul className={menu} style={{ margin: "20px 0" }}>
                 {mainMenu.map(({ name, link }, idx) => (
@@ -194,7 +194,9 @@ const Header = () => {
                   backgroundColor: "var(--white-color)",
                   position: "sticky",
                   bottom: 0,
-                  paddingBottom: 20,
+                  padding: "20px 0",
+                  width: "100%",
+                  borderTop: "1px solid var(--lightGray-color)",
                 }}>
                 {isAuthenticated ? (
                   <li
