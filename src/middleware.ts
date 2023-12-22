@@ -4,7 +4,14 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const isPublic = pathname === "/login" || pathname === "/signup";
+  const isPublic =
+    pathname === "userAuth/login" ||
+    pathname === "userAuth/signup" ||
+    pathname === "userAuth/verifyemail/:path*";
+
+  const adminRoutes = pathname.match(/^\/cms/);
+
+  console.log(adminRoutes);
 
   const token = request.cookies.get("token")?.value;
 
@@ -14,6 +21,9 @@ export function middleware(request: NextRequest) {
 
   if (!isPublic && !token) {
     return NextResponse.redirect(new URL("/userAuth/login", request.nextUrl));
+  }
+
+  if (adminRoutes && token) {
   }
 }
 
