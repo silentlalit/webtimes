@@ -1,9 +1,12 @@
-import { connectDb } from "@/app/api/middleware/mongoose";
 import { NextRequest, NextResponse } from "next/server";
+import { connectDb } from "@/app/api/middleware/mongoose";
 import User from "@/app/api/models/user";
 import { ErrorRes } from "@/app/api/helper/ErrorRes";
 
-export async function GET(req: NextRequest, { params }: any) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     await connectDb();
 
@@ -22,7 +25,10 @@ export async function GET(req: NextRequest, { params }: any) {
   }
 }
 
-export async function PATCH(req: NextRequest, { params }: any) {
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     await connectDb();
 
@@ -55,7 +61,10 @@ export async function PATCH(req: NextRequest, { params }: any) {
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: any) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     await connectDb();
 

@@ -1,5 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
-// import { createWrapper } from "next-redux-wrapper";
+import { configureStore, Action, ThunkAction } from "@reduxjs/toolkit";
 
 import servicesSlice from "../slices/servicesSlice";
 import ProjectsSlice from "../slices/projectsSlice";
@@ -34,5 +33,3 @@ export type AppStore = ReturnType<typeof makeStore>;
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<AppStore["getState"]>;
 export type AppDispatch = AppStore["dispatch"];
-
-// export const wrapper = createWrapper<AppStore>(makeStore);
