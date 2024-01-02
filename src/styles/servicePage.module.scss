@@ -196,13 +196,12 @@
 // sidear from side
 .sidebarContainer {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba($color: var(--black-color), $alpha: 0.5);
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
   z-index: 10;
-  pointer-events: none;
 }
 .sideBar {
   position: fixed;
@@ -210,7 +209,7 @@
   width: 100%;
   right: 0;
   top: 0;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   background-color: var(--white-color);
   padding: 0 15px;
@@ -224,7 +223,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--lightGray-color);
-    padding: 25px 0;
+    height: 70px;
     background-color: var(--white-color);
 
     svg {
@@ -233,9 +232,9 @@
   }
 
   .orderDetails {
-    margin-top: 20px;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 150px);
+    padding-top: 20px;
 
     article {
       border: 2px solid var(--black-color);
@@ -264,12 +263,13 @@
   footer {
     position: sticky;
     bottom: 0;
-    padding: 20px;
+    height: 80px;
     text-align: center;
     border-radius: 10px;
     transition: all 0.3s ease;
     background-color: var(--lightGray-color);
     border-top: 1px solid var(--black-color);
+    display: grid;
   }
 
   /* width */

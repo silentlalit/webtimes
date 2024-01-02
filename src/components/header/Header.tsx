@@ -91,7 +91,7 @@ const Header = () => {
                     pathname === ("/userAuth/login" || "/userAuth/signup") &&
                     activeLink
                   }`}>
-                  <Link href={"/userAuth/login"}>Login/SignIn</Link>
+                  <Link href={"/userAuth/login"}>Login | SignIn</Link>
                 </li>
               )}
 
@@ -113,6 +113,7 @@ const Header = () => {
         ) : null}
       </header>
 
+      {/* =========================== FOR MOBILE MENU ======================= */}
       <header className={`${header_wrapper} ${mob_header}`}>
         <div className={header}>
           <div className={`dContainer ${container}`}>
@@ -171,7 +172,7 @@ const Header = () => {
               style={{
                 justifyContent: "space-between",
                 alignItems: "flex-start",
-                height: "calc(100vh - 115px)",
+                height: "calc(100% - 85px)",
               }}>
               <ul className={menu} style={{ margin: "20px 0" }}>
                 {mainMenu.map(({ name, link }, idx) => (

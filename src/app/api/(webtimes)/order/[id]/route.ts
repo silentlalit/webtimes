@@ -45,3 +45,21 @@ export const POST = async (req: NextRequest, { params }: any) => {
     return ErrorRes(false, error.message, 500);
   }
 };
+
+
+// Delete Order 
+export const DELETE = async (req: NextRequest, { params }: any) => {
+  try {
+    await connectDb();
+
+    const order = await Order.findByIdAndDelete(params.id);
+
+    return NextResponse.json({
+      success: true,
+      id: order,
+      message: "Order Deleted Successfully"
+    });
+  } catch (error: any) {
+    return ErrorRes(false, error.message, 500);
+  }
+};

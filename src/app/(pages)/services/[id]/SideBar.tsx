@@ -31,8 +31,9 @@ const SideBar = ({ service, searchParams, setIsOpenSidebar, style }: any) => {
       name: service?.name,
       title: service?.title,
       thumbnail: service?.thumbnail,
+      image: service?.images[0]
     },
-    orderDetails: service?.priceList[searchParams.pricingIdx],
+    orderDetails: service?.priceList[searchParams?.pricingIdx || 0],
     totalPrice: price,
     extras: [],
   });
@@ -116,8 +117,9 @@ const SideBar = ({ service, searchParams, setIsOpenSidebar, style }: any) => {
 
         <footer>
           <Button
-            style={{ width: "100%", fontWeight: 600 }}
-            title={`Continue US$${order?.totalPrice}`}
+          wrapperStyle={{margin: 'auto', width: "100%"}}
+            style={{ width: "100%" }}
+            title={`Continue US $${order?.totalPrice}`}
             btnType="type2"
             onClick={orderHandler}
           />

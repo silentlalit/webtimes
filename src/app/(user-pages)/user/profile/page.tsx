@@ -218,7 +218,7 @@ const Page = () => {
                 <SwiperSlide className={orderBox} key={String(_id)}>
                   <Link href={`/user/orders/${_id}`}>
                     <Image
-                      src={`/upload/services/${service?.thumbnail}`}
+                      src={`/upload/services/${service?.image}`}
                       sizes="250px"
                       fill
                       alt={service.name}

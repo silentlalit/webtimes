@@ -12,7 +12,6 @@ const Filters = ({ filters, setFilters, clearFilters }: any) => {
   const { categoriesList, technologiesList, pricingList } = data;
 
   const { categories, technologies, pricing, rating } = filters;
-  console.log(pricing)
 
   return (
     <div className={projectsFilters}>

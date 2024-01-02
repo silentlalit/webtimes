@@ -4,7 +4,7 @@ import React from "react";
 
 function loading() {
   return (
-    <div style={{ backgroundColor: "var(--white-color)" }}>
+    <div style={{ backgroundColor: "#000000" }}>
       <video
         onLoadStart={(e: any) => (e.playbackRate = 2)}
         autoPlay

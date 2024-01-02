@@ -32,7 +32,7 @@ const StripePay = ({ order, openPayment, setOpenPayment }: any) => {
         iconStyle: "solid",
         iconColor: "#ff5e69",
         fontWeight: 600,
-        color: "#030303",
+        color: "#fff",
         fontSize: "16px",
         fontSmoothing: "antialiased",
         ":-webkit-autofill": {

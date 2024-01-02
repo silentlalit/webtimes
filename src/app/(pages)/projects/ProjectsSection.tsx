@@ -40,7 +40,7 @@ const ProjectsSection = () => {
     (state: RootState) => state.project
   );
   const [filters, setFilters] = useState<FilterProps>({
-    categories: [{ label: "Websites", value: "Websites" }],
+    categories: [],
     technologies: [],
     pricing: [],
     rating: 0,

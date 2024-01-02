@@ -200,3 +200,15 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .leftside {
+    width: 100%;
+    order: 2;
+  }
+
+  .rightSide {
+    width: 100%;
+    order: 1;
+  }
+}

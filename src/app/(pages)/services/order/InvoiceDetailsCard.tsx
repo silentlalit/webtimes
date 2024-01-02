@@ -37,6 +37,7 @@ const InvoiceDetailsCard = ({ order, user }: any) => {
         <div>
           <p>
             Your invoice will be issued according to the details listed here.
+            ( *Please Fill the information before proceeding to the payment.* )
           </p>
           <br />
           <h4>
