@@ -46,39 +46,6 @@ const UploadFiles = ({
     }
   };
 
-  const handleReplaceImage = async (e: any, image: string) => {
-    console.log(image);
-    // if (!image || !e.target.files[0]) return;
-
-    // setLoading(true);
-    // console.log("file", image, e.target.files[0]);
-    // const data = await replaceImage(image, e.target.files[0]);
-
-    // if (data.success) {
-    //   toast.success(data.message);
-    //   setLoading(false);
-    // } else {
-    //   toast.error(data.error);
-    //   setLoading(false);
-    // }
-  };
-
-  const handleDeleteImage = async (filename: string) => {
-    if (!filename) return;
-
-    setIsLoading(true);
-
-    const data = await deleteImage(filename);
-
-    if (data.success) {
-      toast.success(data.message);
-      setIsLoading(false);
-    } else {
-      toast.error(data.error);
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className={uploadFiles}>
       <div className={filesToUpload}>

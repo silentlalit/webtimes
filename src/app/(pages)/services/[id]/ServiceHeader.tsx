@@ -14,8 +14,6 @@ const ServiceHeader = ({ images }: { images: string[] }) => {
 
   return (
     <div className={serviceHeader}>
-      {images.length && (
-        <>
           <Swiper
             loop={true}
             navigation={true}
@@ -33,27 +31,28 @@ const ServiceHeader = ({ images }: { images: string[] }) => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            loop={true}
-            spaceBetween={10}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className={serviceImagesContainer}>
-            {images?.map((image, idx) => (
-              <SwiperSlide key={idx}>
-                <Image
-                  src={`/upload/services/${image}`}
-                  fill
-                  alt={`service${idx}`}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </>
-      )}
+
+          {images.length > 3 && (
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              loop={true}
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className={serviceImagesContainer}>
+              {images?.map((image, idx) => (
+                <SwiperSlide key={idx}>
+                  <Image
+                    src={`/upload/services/${image}`}
+                    fill
+                    alt={`service${idx}`}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
     </div>
   );
 };

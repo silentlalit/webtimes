@@ -7,6 +7,21 @@
   .container {
     overflow: hidden;
     margin-left: 80px;
+    width: calc(100% - 80px);
+    margin-top: 0;
+  }
+
+  .userProfileMenu{
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    background-color: var(--lightGray-color);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 101;
+    display: none;
   }
 }
 
@@ -14,8 +29,13 @@
   .userLayout {
     .container {
       overflow: hidden;
-      margin-left: 70px;
+      margin-left: 0;
       padding: 0 0.8rem;
+      width: 100%;
+    }
+
+    .userProfileMenu{
+      display: flex;
     }
   }
 }

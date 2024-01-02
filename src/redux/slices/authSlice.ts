@@ -80,6 +80,7 @@ export const authSlice = createSlice({
         state.logggedInUser = null;
         state.isAuthenticated = false;
         state.msg = payload.message;
+        localStorage.removeItem("user_id");
       })
       .addCase(logout.rejected, (state, { payload }: any) => {
         state.loading = false;
@@ -113,11 +114,13 @@ export const authSlice = createSlice({
         state.logggedInUser = payload.user;
         state.isAuthenticated = true;
         state.isError = false;
+        localStorage.setItem("user_id", payload.user._id);
       })
       .addCase(loadUser.rejected, (state) => {
         state.logggedInUser = null;
         state.isAuthenticated = false;
         state.isError = true;
+        localStorage.removeItem("user_id");
       });
 
     // Update address
@@ -194,7 +197,6 @@ export const verifyUser = createAsyncThunk(
       const { data } = await instance.post("/auth/verifyemail", {
         token: `${token}`,
       });
-      console.log(data);
       return data;
     } catch (error: any) {
       console.log(error);

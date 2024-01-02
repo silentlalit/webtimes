@@ -61,6 +61,11 @@ const ProjectsSection = () => {
               return filters.categories.some(
                 (cat) => prCat.value === cat.value
               );
+            }) &&
+            pr.technologies.some((prTech) => {
+              return filters.technologies.some(
+                (tech) => prTech.value === tech.value
+              );
             })
           )
         : projects;

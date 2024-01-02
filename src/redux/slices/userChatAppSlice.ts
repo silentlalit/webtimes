@@ -87,7 +87,6 @@ export function FetchAllProjectsChat() {
     await instance
       .get("/user/get-all-verified-projects-chat")
       .then((response: any) => {
-        console.log(response);
         dispatch(
           updateAllProjectsChat({
             projectsChat: response.data.data,
@@ -116,7 +115,6 @@ export const FetchCallLogs = () => {
         },
       })
       .then((response: any) => {
-        console.log(response);
         dispatch(fetchCallLogs({ call_logs: response.data.data }));
       })
       .catch((err: any) => {
@@ -130,7 +128,6 @@ export const FetchUserProfile = () => {
     instance
       .get("/user/get-me")
       .then((response: any) => {
-        console.log(response);
         dispatch(fetchUser({ user: response.data.data }));
       })
       .catch((err: any) => {

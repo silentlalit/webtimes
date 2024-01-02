@@ -159,7 +159,6 @@ export const createService = createAsyncThunk(
   async (body: any, { rejectWithValue }) => {
     try {
       const { data } = await instance.post("/services", body);
-      console.log(data);
       return data;
     } catch (error: any) {
       console.log(error);
@@ -179,7 +178,6 @@ export const updateService = createAsyncThunk(
       const id = body.get("id");
       body.delete("id");
       const { data } = await instance.patch(`/services/${id}`, body);
-      console.log(data);
       return data;
     } catch (error: any) {
       console.log(error);
@@ -245,7 +243,6 @@ export const deleteImage = createAsyncThunk(
   async (body: any, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`/services/upload?data=${body}`);
-      console.log(data);
       return data;
     } catch (error: any) {
       console.log(error.response.data);

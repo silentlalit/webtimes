@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./sidebar.module.scss";
 
-const { sideMenuContainer, sideMenuContainerHover, sideMenu } = styles;
+const { sideMenuContainer, sideMenuContainerHover, sideMenu, openMenuClass } = styles;
 
-const Sidebar = ({ menu }: any) => {
+const Sidebar = ({ menu, openMenu }: any) => {
   const [isHover, setIsHover] = useState(false);
 
   return (
     <div
-      className={`${sideMenuContainer} ${isHover && sideMenuContainerHover}`}>
+      className={`${sideMenuContainer} ${isHover && sideMenuContainerHover} ${openMenu && openMenuClass}`}>
       <ul
         className={sideMenu}
         onMouseEnter={() => setIsHover(true)}

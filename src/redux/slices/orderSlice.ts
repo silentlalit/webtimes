@@ -91,7 +91,6 @@ export const createOrder = createAsyncThunk(
 export const getAllOrders = createAsyncThunk(
   "orders/getAllOrders",
   async (userId: any, { rejectWithValue }) => {
-    console.log("orders called", userId);
     try {
       const { data } = await instance.get(`/order/user-orders/${userId}`);
       return data;

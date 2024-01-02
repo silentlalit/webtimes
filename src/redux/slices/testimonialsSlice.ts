@@ -121,7 +121,6 @@ export const ReviewsSlice = createSlice({
       .addCase(updateTestimonial.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.error = false;
-        console.log(state.testimonials);
         state.testimonials?.forEach(({ _id }, idx) => {
           if (_id === payload.testimonial._id) {
             state.testimonials[idx] = payload.testimonial;

@@ -16,7 +16,6 @@ export const GET = async (req: NextRequest) => {
 
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.search);
-    // console.log(searchParams);
 
     const apiFeature = new ApiFeatures(Project.find(), searchParams)
       .search()

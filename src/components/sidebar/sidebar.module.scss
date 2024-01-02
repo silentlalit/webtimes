@@ -7,6 +7,8 @@
   align-items: center;
   justify-content: flex-start;
   z-index: 100;
+  border-right: 1px solid var(--lightGray-color);
+  background-color: var(--white-color);
 }
 
 .sideMenuContainerHover {
@@ -83,5 +85,26 @@
       color: var(--black-color);
       display: block;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sideMenuContainer{
+    transform: translateX(-100%);
+    width: max-content;
+  }
+
+  .sideMenu{
+    li span{
+      display: block;
+      transform: translate(0px) !important;
+      pointer-events: all !important;
+      opacity: 1 !important;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .openMenuClass{
+    transform: translateX(0%);
   }
 }

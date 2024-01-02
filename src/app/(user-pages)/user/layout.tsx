@@ -1,24 +1,20 @@
 "use client";
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { GiSpaceSuit } from "react-icons/gi";
 import { GoHome, GoProject } from "react-icons/go";
 import { BsChatLeft } from "react-icons/bs";
 import { MdOutlineContacts } from "react-icons/md";
+import { RiBarChartHorizontalLine } from "react-icons/ri";
+import { usePathname } from "next/navigation";
 
 import styles from "@/styles/userLayout.module.scss";
-import { Loader, LoadingUser, Sidebar } from "@/components";
+import { LoadingUser, Sidebar } from "@/components";
 import { SocketProvider } from "@/providers/socketIo";
 import { useAppSelector } from "@/redux/hook";
 import { RootState } from "@/redux/store/store";
-// import { useAppDispatch, useAppSelector } from "@/redux/hook";
-// import {
-//   AddDirectConversation,
-//   AddDirectMessage,
-//   UpdateDirectConversation,
-// } from "@/redux/slices/conversationSlice";
 
-const { userLayout, container } = styles;
+const { userLayout, container, userProfileMenu } = styles;
 
 const menu = [
   {
@@ -49,9 +45,15 @@ const menu = [
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
   const { isAuthenticated } = useAppSelector(
     (state: RootState) => state.authUser
   );
+  const [openMenu, setOpenMenu] = useState(false);
+
+  useEffect(() => { setOpenMenu(false) }, [pathname]);
+
+  const handleOpenMenu = () => setOpenMenu(!openMenu);
 
   return (
     <div className={userLayout}>
@@ -59,7 +61,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <LoadingUser />
       ) : (
         <>
-          <Sidebar menu={menu} />
+          <div className={`flex ${userProfileMenu}`} onClick={handleOpenMenu}>
+            <RiBarChartHorizontalLine
+              size={22}
+              color="var(--black-color)"
+            />
+          </div>
+
+          <Sidebar menu={menu} openMenu={openMenu} />
 
           <SocketProvider>
             <div className={`${container} dContainer`}>{children}</div>

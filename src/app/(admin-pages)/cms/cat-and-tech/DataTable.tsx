@@ -117,7 +117,6 @@ const Dialog = ({ name, dispatch, loading, setLoading }: any) => {
     }
 
     setLoading(true);
-    console.log("hello");
 
     const { payload }: any = await dispatch(
       addData({

@@ -10,8 +10,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
     const orderData = await req.json();
 
-    console.log(orderData);
-
     const order = await Order.create(orderData);
 
     if (!order)

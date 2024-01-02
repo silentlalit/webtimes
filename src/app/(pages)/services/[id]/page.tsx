@@ -3,18 +3,20 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import styles from "@/styles/servicePage.module.scss";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { clearService, getService } from "@/redux/slices/servicesSlice";
-import { Button, Loader } from "@/components";
-import { Testimonials } from "@/container";
 import { LiaClockSolid } from "react-icons/lia";
 import { MdLoop, MdOutlineContactSupport } from "react-icons/md";
 import { BsArrowRightShort, BsFillLightningFill } from "react-icons/bs";
+
+import styles from "@/styles/servicePage.module.scss";
+import { Button, Loader } from "@/components";
+import { Testimonials } from "@/container";
 import ServiceHeader from "./ServiceHeader";
 import SideBar from "./SideBar";
+
+// Redux
 import { RootState } from "@/redux/store/store";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { getService } from "@/redux/slices/servicesSlice";
 
 const {
   servicePage,
@@ -31,9 +33,7 @@ const {
 } = styles;
 
 const Page = ({ params, searchParams }: any) => {
-  const { service, loading } = useAppSelector(
-    (state: RootState) => state.service
-  );
+  const { service, loading } = useAppSelector((state: RootState) => state.service);
   const { id } = params;
   const pathname = usePathname();
   const dispatch = useAppDispatch();
@@ -41,68 +41,63 @@ const Page = ({ params, searchParams }: any) => {
 
   useEffect(() => {
     service?._id !== id && dispatch(getService(id));
-
-    return () => {
-      dispatch(clearService());
-    };
   }, [dispatch, id, service?._id]);
 
-  if (loading)
-    return (
+  return (
+    loading ? (
       <div style={{ width: "100vw", height: "100vh" }} className="flex">
         <Loader />
       </div>
-    );
+    ) : (
+      <div className={servicePage}>
+        <ServiceHeader images={service?.images || []} />
 
-  return (
-    <div className={servicePage}>
-      <ServiceHeader images={service?.images || []} />
+        <div className={`${container} dContainer`}>
+          <div className={serviceLeftSection}>
+            <div className={serviceHeaderTitle}>
+              <h4 className="topTag">{service?.name}</h4>
+              <h3>{service?.title}</h3>
+            </div>
 
-      <div className={`${container} dContainer`}>
-        <div className={serviceLeftSection}>
-          <div className={serviceHeaderTitle}>
-            <h4 className="topTag">{service?.name}</h4>
-            <h3>{service?.title}</h3>
+            <div className={serviceDetails}>
+              <h4>Description</h4>
+              <p
+                dangerouslySetInnerHTML={{ __html: service?.description || "" }}
+              />
+            </div>
+
+            <div className={serviceReviews}>
+              <Testimonials
+                breakPoints={{ 1500: { slidesPerView: 1, spaceBetween: 20 } }}
+              />
+            </div>
+
+            <div className="comparisonContainer"></div>
           </div>
 
-          <div className={serviceDetails}>
-            <h4>Description</h4>
-            <p
-              dangerouslySetInnerHTML={{ __html: service?.description || "" }}
+          <div className={serviceRightSection} id="pricingDetails">
+            <SidePriceBox
+              priceList={service?.priceList || []}
+              searchParams={searchParams}
+              pathname={pathname}
+              setIsOpenSidebar={setIsOpenSidebar}
             />
           </div>
-
-          <div className={serviceReviews}>
-            <Testimonials
-              breakPoints={{ 1500: { slidesPerView: 1, spaceBetween: 20 } }}
-            />
-          </div>
-
-          <div className="comparisonContainer"></div>
         </div>
 
-        <div className={serviceRightSection} id="pricingDetails">
-          <SidePriceBox
-            priceList={service?.priceList || []}
+        {isOpenSidebar ? (
+          <SideBar
+            service={service}
             searchParams={searchParams}
-            pathname={pathname}
             setIsOpenSidebar={setIsOpenSidebar}
+            style={{
+              transform: isOpenSidebar ? "translate(0%)" : "translate(100%)",
+              transition: "all 0.3s ease",
+            }}
           />
-        </div>
+        ) : null}
       </div>
-
-      {isOpenSidebar ? (
-        <SideBar
-          service={service}
-          searchParams={searchParams}
-          setIsOpenSidebar={setIsOpenSidebar}
-          style={{
-            transform: isOpenSidebar ? "translate(0%)" : "translate(100%)",
-            transition: "all 0.3s ease",
-          }}
-        />
-      ) : null}
-    </div>
+    )
   );
 };
 

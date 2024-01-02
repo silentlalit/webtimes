@@ -33,7 +33,6 @@ const Page = () => {
     const latestOrder = JSON.parse(localStorage.getItem("latestOrder") || "{}");
 
     if (!latestOrder.serviceId) {
-      console.log("push to services");
       push("/services");
     }
 

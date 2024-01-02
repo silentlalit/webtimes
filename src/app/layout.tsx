@@ -55,11 +55,11 @@ function RootLayout({ children }: { children: React.ReactNode }) {
           pathname?.match(/^\/cms/) ? (
             <App>{children}</App>
           ) : (
-            <>
+            <Fragment>
               <Header />
               <App>{children}</App>
               <Footer />
-            </>
+            </Fragment>
           )}
         </StoreProvider>
       </body>
