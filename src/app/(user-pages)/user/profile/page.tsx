@@ -26,13 +26,14 @@ const {
   right,
   activeChatsSection,
   activeChatsContainer,
+  addConversationIcon,
   activeOrdersSection,
   activeOrdersContainer,
   orderBox,
 } = styles;
 
 const Page = () => {
-  const { logggedInUser }: any = useAppSelector((state) => state.authUser);
+  const { logggedInUser: { _id: userId = "", name = "", email = "" } }: any = useAppSelector((state) => state.authUser);
   const { loading: ordersLoading, orders }: any = useAppSelector(
     (state) => state.order
   );
@@ -41,16 +42,15 @@ const Page = () => {
   } = useAppSelector((state) => state.conversation);
   const dispatch = useAppDispatch();
 
-  const { _id: userId = "", name = "", email = "" } = logggedInUser || "";
   const { socket, isConnected } = useSocket();
-  const [isOpenDialong, setIsOpenDialong] = useState(false);
-  const [refreshChats, setRefreshChats] = useState(false);
-  const [refreshOrders, setRefreshOrders] = useState(false);
+  const [isOpenDialong, setIsOpenDialong] = useState<boolean>(false);
+  const [refreshChats, setRefreshChats] = useState<boolean>(false);
+  const [refreshOrders, setRefreshOrders] = useState<boolean>(false);
 
   const breakPoints = {
     300: {
       slidesPerView: 1,
-      spaceBetween: 0,
+      spaceBetween: 25,
     },
     768: {
       slidesPerView: 2,
@@ -62,7 +62,7 @@ const Page = () => {
     },
     1500: {
       slidesPerView: 4,
-      spaceBetween: 20,
+      spaceBetween: 30,
     },
   };
 
@@ -79,17 +79,18 @@ const Page = () => {
           dispatch(FetchDirectConversations({ conversations: data }));
         }
       );
-  }, [socket, userId, refreshChats, dispatch]);
+  }, [socket, isConnected, userId, refreshChats, dispatch]);
 
   const AddNewChat = (
     orderId: string,
-    name: string,
+    orderName: string,
+    orderImg: string = '',
     userId: string,
     adminId: string
   ) => {
     socket.emit(
       "add_conversation",
-      { name, to: adminId, from: userId, orderId: orderId },
+      { orderName, orderImg, to: adminId, from: userId, orderId: orderId },
       ({ exist, chat }: any) => {
         exist
           ? toast.success(
@@ -142,17 +143,7 @@ const Page = () => {
 
         <div className={activeChatsContainer}>
           <div
-            style={{
-              width: 100,
-              height: 100,
-              borderRadius: "50%",
-              backgroundColor: "Var(--exLightGray-color)",
-              border: "1px solid var(--secondary-color)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-            }}
+            className={addConversationIcon}
             onClick={() => setIsOpenDialong(true)}>
             <GoPlus size={30} color="var(--white-color)" />
           </div>
@@ -166,8 +157,8 @@ const Page = () => {
                     pathname: "/user/chats",
                     query: { room_id: conv.id },
                   }}>
-                  <div key={conv.id} style={{ cursor: "pointer" }}>
-                    <ProfileIcon name={conv.chat_name} img={conv.img} />
+                  <div key={conv.id} style={{ cursor: "pointer", width: 120 }}>
+                    <ProfileIcon name={conv.chat_name} img={conv.chat_image} />
                   </div>
                 </Link>
               ))
@@ -199,7 +190,7 @@ const Page = () => {
         ) : orders.length ? (
           <Swiper
             slidesPerView={4}
-            spaceBetween={10}
+            spaceBetween={20}
             freeMode={true}
             pagination={{ clickable: true }}
             modules={[FreeMode]}
@@ -218,34 +209,36 @@ const Page = () => {
                 <SwiperSlide className={orderBox} key={String(_id)}>
                   <Link href={`/user/orders/${_id}`}>
                     <Image
-                      src={`/upload/services/${service?.image}`}
+                      src={service.image ? `/upload/services/${service?.image}` : '/project-demo.jpg'}
                       sizes="250px"
                       fill
                       alt={service.name}
                     />
                   </Link>
 
-                  <Link href={`/user/orders/${_id}`}>
-                    <header>
-                      <Image
-                        src={user.avatar}
-                        width={50}
-                        height={50}
-                        alt={name}
-                      />
-                      <h4>{projectName || user.name}</h4>
-                    </header>
-                  </Link>
+                  <article>
+                    <Link href={`/user/orders/${_id}`}>
+                      <header className="flex">
+                        <Image
+                          src={user.avatar}
+                          width={50}
+                          height={50}
+                          alt={name}
+                        />
+                        <h4>{projectName || user.name}</h4>
+                      </header>
+                    </Link>
 
-                  <div>
-                    <p>TYPE: {orderDetails.type}</p>
-                    <p>{orderDetails.name}</p>
-                  </div>
-                  <div>
-                    <p>PRICE: {totalPrice}</p>
-                    <p>{orderDetails.delivery} days</p>
-                  </div>
-                  <p>Ordered: {createdAt}</p>
+                    <div className="flex">
+                      <p>TYPE: {orderDetails.type}</p>
+                      <p>{orderDetails.name}</p>
+                    </div>
+                    <div className="flex">
+                      <p>PRICE: {totalPrice}</p>
+                      <p>{orderDetails.delivery} days</p>
+                    </div>
+                    <p>Ordered: {createdAt}</p>
+                  </article>
                 </SwiperSlide>
               )
             )}
@@ -285,6 +278,7 @@ const Page = () => {
                       AddNewChat(
                         _id,
                         projectName,
+                        service.image,
                         userId,
                         `${process.env.NEXT_PUBLIC_ADMIN_ID}`
                       )

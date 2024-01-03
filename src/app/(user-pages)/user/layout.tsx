@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, Fragment} from "react";
 import { GiSpaceSuit } from "react-icons/gi";
 import { GoHome, GoProject } from "react-icons/go";
 import { BsChatLeft } from "react-icons/bs";
@@ -60,7 +60,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {!isAuthenticated ? (
         <LoadingUser />
       ) : (
-        <>
+        <Fragment>
           <div className={`flex ${userProfileMenu}`} onClick={handleOpenMenu}>
             <RiBarChartHorizontalLine
               size={22}
@@ -73,7 +73,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <SocketProvider>
             <div className={`${container} dContainer`}>{children}</div>
           </SocketProvider>
-        </>
+        </Fragment>
       )}
     </div>
   );

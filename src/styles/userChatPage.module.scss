@@ -70,3 +70,26 @@
     font-weight: 600;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .activeChat{
+    .leftBox {
+      display: none;
+    }
+    
+    .rightBox {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  .activeList {
+    .leftBox {
+      width: 100%;
+    }
+    
+    .rightBox {
+      display: none;
+    }
+  }
+}

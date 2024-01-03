@@ -40,6 +40,7 @@ const SideBar = ({ service, searchParams, setIsOpenSidebar, style }: any) => {
 
   const orderHandler = () => {
     localStorage.setItem("latestOrder", JSON.stringify(order));
+
     push(
       `/services/order?id=${service?._id}&pricingIdx=${
         searchParams.pricingIdx || 0
@@ -117,7 +118,7 @@ const SideBar = ({ service, searchParams, setIsOpenSidebar, style }: any) => {
 
         <footer>
           <Button
-          wrapperStyle={{margin: 'auto', width: "100%"}}
+            wrapperStyle={{margin: 'auto', width: "100%"}}
             style={{ width: "100%" }}
             title={`Continue US $${order?.totalPrice}`}
             btnType="type2"

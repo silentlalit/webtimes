@@ -99,6 +99,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 
     return () => {
       socketInstance?.off("new_message");
+      socketInstance.on("end", () => {});
       socketInstance.disconnect();
     };
   }, [dispatch]);

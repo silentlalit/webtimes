@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import styles from "@/styles/userChatPage.module.scss";
 import ChatListSidebar from "./ChatListSidebar";
 import Conversation from "./Conversation";
 import ChatHeader from "./(components)/ChatHeader";
 import ChatFooter from "./(components)/ChatFooter";
 import UserProfileSideBar from "./UserProfileSideBar";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import Image from "next/image";
+
 import { useSocket } from "@/providers/socketIo";
 import { SelectConversation } from "@/redux/slices/userChatAppSlice";
 import { ReadAllMsg } from "@/redux/slices/conversationSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 
 const {
   conversationPage,
@@ -20,6 +21,9 @@ const {
   conversationBox,
   showUserProfileSection,
   hideUserProfileSection,
+
+  activeChat,
+  activeList
 } = styles;
 
 const Page = ({ searchParams }: any) => {
@@ -52,14 +56,14 @@ const Page = ({ searchParams }: any) => {
   }, [searchParams.room_id, dispatch]);
 
   return (
-    <div className={conversationPage}>
+    <div className={`${conversationPage} ${room_id ? activeChat : activeList}`}>
       <div className={leftBox}>
         <ChatListSidebar />
       </div>
 
       <div className={rightBox}>
         {room_id ? (
-          <>
+          <Fragment>
             <div
               style={{
                 width: "100%",
@@ -83,7 +87,7 @@ const Page = ({ searchParams }: any) => {
               }`}>
               <UserProfileSideBar open={open} type={type} />
             </div>
-          </>
+          </Fragment>
         ) : (
           <div
             style={{

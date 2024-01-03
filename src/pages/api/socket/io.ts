@@ -55,87 +55,41 @@ const ioHandler = async (req: NextApiRequest, res: CustomNextResponse) => {
         }
       }
 
-      // We can write our socket event listeners in here...
-      // socket.on("friend_request", async (data: any) => {
-      //   const to = await User.findById(data.to).select("socket_id");
-      //   const from = await User.findById(data.from).select("socket_id");
-
-      //   // create a friend request
-      //   await FriendRequest.create({
-      //     sender: data.from,
-      //     recipient: data.to,
-      //   });
-      //   // emit event request received to recipient
-      //   io.to(to?.socket_id).emit("new_friend_request", {
-      //     message: "New friend request received",
-      //   });
-      //   io.to(from?.socket_id).emit("request_sent", {
-      //     message: "Request Sent successfully!",
-      //   });
-      // });
-
-      // socket.on("accept_request", async (data: any) => {
-      //   // accept friend request => add ref of each other in friends array
-      //   console.log(data);
-      //   const request_doc = await FriendRequest.findById(data.request_id);
-
-      //   console.log(request_doc);
-
-      //   const sender = await User.findById(request_doc.sender);
-      //   const receiver = await User.findById(request_doc.recipient);
-
-      //   sender.friends.push(request_doc.recipient);
-      //   receiver.friends.push(request_doc.sender);
-
-      //   await receiver.save({ new: true, validateModifiedOnly: true });
-      //   await sender.save({ new: true, validateModifiedOnly: true });
-
-      //   await FriendRequest.findByIdAndDelete(data.request_id);
-
-      //   // emit event request accepted to both
-      //   io.to(sender?.socket_id).emit("request_accepted", {
-      //     message: "Friend Request Accepted",
-      //   });
-      //   io.to(receiver?.socket_id).emit("request_accepted", {
-      //     message: "Friend Request Accepted",
-      //   });
-      // });
-
       socket.on("get_conversations_list", async (data: any, callback: any) => {
         console.log("get_conversations_list called", user_id);
         const existing_conversations = await OneToOneMessage.find({
           participants: { $all: [user_id] },
-        }).populate("participants", "name username avatar _id email status");
+        }).populate("participants", "name username _id email status avatar")
 
         callback(existing_conversations);
       });
 
       socket.on("add_conversation", async (data: any, callback: any) => {
-        const { name, to, from, orderId } = data;
+        console.log("add_conversation")
+        const { orderName, orderImg, to, from, orderId } = data;
 
         const existing_conversations = await OneToOneMessage.find({
           participants: { $size: 2, $all: [to, from] },
           order: orderId,
-        }).populate("participants", "name username _id email status avatar");
+        }).populate("participants", "name username _id email status avatar")
 
         // if no => create a new OneToOneMessage doc & emit event "start_chat" & send conversation details as payload
         if (existing_conversations.length === 0) {
           let new_chat = await OneToOneMessage.create({
-            name: name,
+            name: orderName,
+            image: orderImg,
             participants: [to, from],
             order: orderId,
           });
 
-          new_chat = await OneToOneMessage.findById(new_chat).populate(
-            "participants",
-            "name username _id email status avatar"
-          );
+          new_chat = await OneToOneMessage.findById(new_chat).populate("participants",  "name username _id email status avatar")
 
           socket.emit("start_chat", new_chat);
           callback({ exist: false, chat: new_chat });
         }
         // if yes => just emit event "start_chat" & send conversation details as payload
         else {
+          console.log(existing_conversations[0])
           socket.emit("start_chat", existing_conversations[0]);
           callback({ exist: true, chat: existing_conversations[0] });
         }

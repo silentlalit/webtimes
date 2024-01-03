@@ -3,7 +3,10 @@ import { Schema, models, model } from "mongoose";
 const OneToOneMsgSchema = new Schema({
   name: {
     type: String,
-    required: [true, "Name is required"],
+    required: [true, "Order Name is required"],
+  },
+  image: {
+    type: String,
   },
   participants: [
     {

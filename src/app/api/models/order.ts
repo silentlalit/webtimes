@@ -15,6 +15,7 @@ const orderSchema = new Schema({
     name: String,
     title: String,
     thumbnail: String,
+    image: String,
   },
   orderDetails: {
     type: Object,

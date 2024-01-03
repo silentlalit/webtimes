@@ -8,7 +8,6 @@ import { FetchDirectConversations } from "@/redux/slices/conversationSlice";
 import { useSocket } from "@/providers/socketIo";
 import { Loader, Tooltip } from "@/components";
 import { IoIosRefresh } from "react-icons/io";
-// import { ChatList } from "@/utils/static/data";
 
 const ChatListSidebar = () => {
   const dispatch = useAppDispatch();
@@ -23,10 +22,11 @@ const ChatListSidebar = () => {
     const user_id = localStorage.getItem("user_id");
     setLoading(true);
     socket?.emit("get_conversations_list", { user_id }, (data: any) => {
+      console.log(data)
       dispatch(FetchDirectConversations({ conversations: data }));
       setLoading(false);
     });
-  }, [socket, refreshChats, dispatch]);
+  }, [socket, isConnected, refreshChats, dispatch]);
 
   return (
     <div>
@@ -50,12 +50,14 @@ const ChatListSidebar = () => {
 
           {loading && <Loader style={{ width: 50, height: 50 }} />}
 
-          <h4
+          <h4 
+            className="flex"
             style={{
               paddingBottom: 10,
               borderBottom: "1px solid var(--lightGray-color)",
+              justifyContent: "start"
             }}>
-            <VscPinned /> Pinned Chats
+            <VscPinned /> <span>Pinned Chats</span>
           </h4>
 
           {conversations.filter((el) => el.pinned).length ? (

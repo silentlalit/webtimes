@@ -35,10 +35,14 @@ const conversationSlice = createSlice({
 
         return {
           id: el._id,
-          chat_name: el.name,
 
+          // about the order
+          orderId: el.order,
+          chat_name: el.name,
+          chat_image: el.image,
+          
           user_id: otherUser?._id,
-          img: otherUser?.avatar,
+          avatar: otherUser?.avatar,
           name: otherUser?.name,
           email: otherUser?.email,
           username: otherUser?.username,
@@ -47,9 +51,6 @@ const conversationSlice = createSlice({
           time: el.messages?.slice(-1)[0]?.created_at,
           unread: el?.unreadMsg?.user === user_id ? el.unreadMsg.unread : 0,
           pinned: false,
-
-          // about the order
-          orderId: el.orderId,
         };
       });
 

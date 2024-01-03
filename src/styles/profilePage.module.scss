@@ -54,6 +54,20 @@
     display: flex;
     gap: 25px;
     align-items: flex-start;
+    overflow-x: auto;
+
+    .addConversationIcon {
+      width: 100px;
+      min-width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: Var(--exLightGray-color);
+      border: 1px solid var(--secondary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
   }
 }
 
@@ -67,21 +81,20 @@
 
   .orderBox {
     overflow: hidden;
+    border: 1px solid var(--lightGray-color);
+    border-radius: 10px;
 
     img {
       position: relative !important;
       object-fit: contain;
       height: 200px !important;
-      border-radius: 8px;
     }
 
     header {
-      margin-top: 20px;
       width: 100%;
-      display: flex;
-      align-items: center;
       gap: 30px;
       margin-bottom: 8px;
+      justify-content: flex-start;
 
       img {
         border-radius: 50%;
@@ -90,16 +103,27 @@
       }
     }
 
-    & > div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin: 4px 0;
+    article{
+      padding: 15px;
+      border-top: 1px solid var(--lightGray-color);
 
-      p {
-        margin-top: 0;
+      & > div {
+        justify-content: space-between;
+        gap: 15px;
+        margin: 4px 0;
+  
+        p {
+          margin-top: 0;
+        }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .activeChatsSection {
+    .activeChatsContainer {
+      gap: 15px;
     }
   }
 }

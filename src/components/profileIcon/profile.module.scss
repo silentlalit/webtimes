@@ -7,7 +7,7 @@
   h4 {
     font-size: 20px;
     line-height: 25px;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 
@@ -34,6 +34,15 @@
 
     &:hover {
       background-color: var(--lightGray-color);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    h4 {
+      font-size: 14px;
+      line-height: 18px;
     }
   }
 }
