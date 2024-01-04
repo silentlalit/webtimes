@@ -22,7 +22,7 @@ const ChatListSidebar = () => {
     const user_id = localStorage.getItem("user_id");
     setLoading(true);
     socket?.emit("get_conversations_list", { user_id }, (data: any) => {
-      console.log(data)
+      // console.log(data)
       dispatch(FetchDirectConversations({ conversations: data }));
       setLoading(false);
     });
@@ -33,22 +33,26 @@ const ChatListSidebar = () => {
       {isConnected ? (
         <>
           {!conversations.length && (
-            <div
-              className="flex"
-              style={{ justifyContent: "flex-start", marginBottom: 20 }}>
-              <Tooltip text={"Refresh Chats"} style={{ left: 50 }}>
-                <IoIosRefresh
-                  size={20}
-                  color="var(--black-color)"
-                  style={{ marginRight: 20, cursor: "pointer" }}
-                  onClick={() => setRefreshChats(!refreshChats)}
-                />
-              </Tooltip>
-              <h4>Active Chats about orders</h4>
-            </div>
-          )}
+            <>
+              <div
+                className="flex"
+                style={{ justifyContent: "flex-start", marginBottom: 20 }}>
+                <Tooltip text={"Refresh Chats"} style={{ left: 50 }}>
+                  <IoIosRefresh
+                    size={20}
+                    color="var(--black-color)"
+                    style={{ marginRight: 20, cursor: "pointer", transition: "all 0.2s ease" }}
+                    onClick={() => setRefreshChats(!refreshChats)}
+                    onMouseDownCapture={(e:any) => e.target.style.transform = "rotate(90deg)"}
+                    onMouseUpCapture={(e:any) => e.target.style.transform = "rotate(0deg)"}
+                  />
+                </Tooltip>
+                <h4>Active Chats about orders</h4>
+              </div>
 
-          {loading && <Loader style={{ width: 50, height: 50 }} />}
+              {loading && <Loader style={{ width: 50, height: 50 }} />}
+            </>
+          )}
 
           <h4 
             className="flex"

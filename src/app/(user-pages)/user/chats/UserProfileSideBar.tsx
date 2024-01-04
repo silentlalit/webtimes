@@ -21,7 +21,7 @@ const UserProfileSideBar = ({ open, type }: any) => {
   const { user } = useAppSelector((state) => state.chat);
 
   useEffect(() => {
-    dispatch(FetchUserProfile());
+    // dispatch(FetchUserProfile());
   }, [dispatch]);
 
   return (

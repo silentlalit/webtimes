@@ -69,7 +69,7 @@ const ChatElement = ({
           style={{ justifyContent: "space-between", gap: 8 }}>
           <Avatar img={img} online={online} />
           <div>
-            <h4 style={{ fontWeight: 500 }}>{chat_name}</h4>
+            <h4 style={{ fontWeight: 500, fontSize: 16 }}>{chat_name}</h4>
             <p style={{ marginTop: 4, fontWeight: unread ? "bold" : "normal" }}>
               {msg && trimContent(msg, 20)}
             </p>

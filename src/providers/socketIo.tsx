@@ -98,8 +98,11 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     // });
 
     return () => {
+      console.log("going out to user layout")
       socketInstance?.off("new_message");
-      socketInstance.on("end", () => {});
+      socketInstance.on("end", (e) => {
+        console.log(e)
+      });
       socketInstance.disconnect();
     };
   }, [dispatch]);

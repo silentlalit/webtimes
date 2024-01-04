@@ -18,6 +18,11 @@ const { userLayout, container, userProfileMenu } = styles;
 
 const menu = [
   {
+    name: "WebTimes",
+    Icon: <span>WT</span>,
+    link: "/",
+  },
+  {
     name: "My Space",
     Icon: <GiSpaceSuit size={35} />,
     link: "/user/profile",

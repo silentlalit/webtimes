@@ -5,19 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiEdit2 } from "react-icons/fi";
 import { LuSettings } from "react-icons/lu";
-import { GoPlus } from "react-icons/go";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
 
 import styles from "@/styles/profilePage.module.scss";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { Button, Loader, Modal, ProfileIcon, Tooltip } from "@/components";
+import { Button, Loader, Modal, Tooltip } from "@/components";
 import { getAllOrders } from "@/redux/slices/orderSlice";
 import { useSocket } from "@/providers/socketIo";
-import { FetchDirectConversations } from "@/redux/slices/conversationSlice";
 import toast from "react-hot-toast";
 import { IoIosRefresh } from "react-icons/io";
+import ActiveChats from "./ActiveChats";
 
 const {
   profile,
@@ -25,8 +24,6 @@ const {
   left,
   right,
   activeChatsSection,
-  activeChatsContainer,
-  addConversationIcon,
   activeOrdersSection,
   activeOrdersContainer,
   orderBox,
@@ -37,15 +34,12 @@ const Page = () => {
   const { loading: ordersLoading, orders }: any = useAppSelector(
     (state) => state.order
   );
-  const {
-    direct_chat: { conversations },
-  } = useAppSelector((state) => state.conversation);
   const dispatch = useAppDispatch();
 
   const { socket, isConnected } = useSocket();
   const [isOpenDialong, setIsOpenDialong] = useState<boolean>(false);
-  const [refreshChats, setRefreshChats] = useState<boolean>(false);
   const [refreshOrders, setRefreshOrders] = useState<boolean>(false);
+
 
   const breakPoints = {
     300: {
@@ -69,17 +63,6 @@ const Page = () => {
   useEffect(() => {
     dispatch(getAllOrders(userId));
   }, [userId, refreshOrders, dispatch]);
-
-  useEffect(() => {
-    userId &&
-      socket?.emit(
-        "get_conversations_list",
-        { user_id: userId },
-        (data: any) => {
-          dispatch(FetchDirectConversations({ conversations: data }));
-        }
-      );
-  }, [socket, isConnected, userId, refreshChats, dispatch]);
 
   const AddNewChat = (
     orderId: string,
@@ -129,46 +112,7 @@ const Page = () => {
 
       {/* Active Chats ------------------ */}
       <div className={activeChatsSection}>
-        <div className="flex" style={{ justifyContent: "flex-start" }}>
-          <Tooltip text={"Refresh Chats"} style={{ left: 50 }}>
-            <IoIosRefresh
-              size={20}
-              color="var(--black-color)"
-              style={{ marginRight: 20, cursor: "pointer" }}
-              onClick={() => setRefreshChats(!refreshChats)}
-            />
-          </Tooltip>
-          <h3>Active Chats about orders</h3>
-        </div>
-
-        <div className={activeChatsContainer}>
-          <div
-            className={addConversationIcon}
-            onClick={() => setIsOpenDialong(true)}>
-            <GoPlus size={30} color="var(--white-color)" />
-          </div>
-
-          {isConnected ? (
-            conversations.length ? (
-              conversations.map((conv: any) => (
-                <Link
-                  key={conv.id}
-                  href={{
-                    pathname: "/user/chats",
-                    query: { room_id: conv.id },
-                  }}>
-                  <div key={conv.id} style={{ cursor: "pointer", width: 120 }}>
-                    <ProfileIcon name={conv.chat_name} img={conv.chat_image} />
-                  </div>
-                </Link>
-              ))
-            ) : (
-              <p>No Active Chats, Create one to start</p>
-            )
-          ) : (
-            <p>Please wait, connecting....</p>
-          )}
-        </div>
+        <ActiveChats socket={socket} isConnected={isConnected} userId={userId} dispatch={dispatch} setIsOpenDialong={setIsOpenDialong} />
       </div>
 
       {/* Orders going on -------------- */}
@@ -178,8 +122,10 @@ const Page = () => {
             <IoIosRefresh
               size={20}
               color="var(--black-color)"
-              style={{ marginRight: 20, cursor: "pointer" }}
+              style={{ marginRight: 20, cursor: "pointer", transition: "all 0.2s ease" }}
               onClick={() => setRefreshOrders(!refreshOrders)}
+              onMouseDownCapture={(e:any) => e.target.style.transform = "rotate(90deg)"}
+              onMouseUpCapture={(e:any) => e.target.style.transform = "rotate(0deg)"}
             />
           </Tooltip>
           <h3> On going Orders.</h3>

@@ -10,7 +10,7 @@ import { Footer, Header } from "@/components";
 // redux ----------------
 import StoreProvider from "@/providers/StoreProvider";
 import { loadUser } from "@/redux/slices/authSlice";
-import { useAppDispatch } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 
 // Skeleton styles
 import "react-loading-skeleton/dist/skeleton.css";
@@ -70,9 +70,11 @@ function RootLayout({ children }: { children: React.ReactNode }) {
 export default RootLayout;
 
 const App = ({ children }: { children: React.ReactNode }) => {
+  const {isAuthenticated} = useAppSelector(state => state.authUser)
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    !isAuthenticated &&
     dispatch(loadUser());
   }, [dispatch]);
 

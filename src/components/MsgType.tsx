@@ -10,9 +10,7 @@ import Image from "next/image";
 const MessageOption = () => {
   const [isMenu, setIsMenu] = useState(false);
 
-  const handleItemClick = ({ id }: any) => {
-    setIsMenu(!isMenu);
-
+  const handleItemClick = (id: string) => {
     switch (id) {
       case "Reply":
         console.log(id);
@@ -28,7 +26,7 @@ const MessageOption = () => {
       style={{ position: "relative" }}
       tabIndex={0}
       onBlur={() => setIsMenu(false)}>
-      <BiDotsVerticalRounded size={20} onClick={handleItemClick} />
+      <BiDotsVerticalRounded size={20} onClick={() => setIsMenu(!isMenu)} />
 
       {isMenu && (
         <div
@@ -36,7 +34,8 @@ const MessageOption = () => {
             position: "absolute",
             bottom: 15,
             width: 130,
-            background: "white",
+            background: "var(--lightGray-color)",
+            border: "1px solid var(--exLightGray-color)",
             padding: 5,
             borderRadius: 5,
             right: 15,
@@ -44,9 +43,10 @@ const MessageOption = () => {
             flexDirection: "column",
             gap: 10,
             fontSize: 14,
+            zIndex: 99999999
           }}>
           {Message_options?.map((el) => (
-            <div key={el.title} id={el.title} onClick={handleItemClick}>
+            <div key={el.title} id={el.title} onClick={() => handleItemClick(el.title)}>
               {el.title}
             </div>
           ))}
