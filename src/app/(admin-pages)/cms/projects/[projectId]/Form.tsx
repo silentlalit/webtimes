@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
+
 import {
   Button,
   TextInput,
@@ -43,12 +43,11 @@ const defaultValues = {
 //   link?: string | undefined;
 // };
 
-const Form = ({ projectId, project }: any) => {
+const Form = ({ push, projectId, project }: any) => {
   const { technologiesList, categoriesList } = useAppSelector(
     (state) => state.staticData
   );
   const dispatch = useAppDispatch();
-  const { push } = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
 
   const {
@@ -99,10 +98,9 @@ const Form = ({ projectId, project }: any) => {
     fd.append("thumbnail", thumbnail);
 
     if (projectId === "_new") {
-      console.log("new");
       const { payload }: any = await dispatch(createProject(fd));
       if (payload.success) {
-        push("/cms/projects");
+        push(`/cms/projects?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`);
         toast.success(payload.message);
         setLoading(false);
       } else {
@@ -110,7 +108,6 @@ const Form = ({ projectId, project }: any) => {
         setLoading(false);
       }
     } else {
-      console.log("new");
       fd.append("id", projectId);
       const { payload }: any = await dispatch(updateProject(fd));
       if (payload.success) {

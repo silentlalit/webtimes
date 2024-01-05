@@ -11,6 +11,7 @@ import { AiFillEye } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
 import { useAppSelector } from "@/redux/hook";
 import { GiExpand } from "react-icons/gi";
+import Link from "next/link";
 
 const {
   work_section,
@@ -44,7 +45,7 @@ const Projects = () => {
                   const { _id, title, categories, thumbnail } = pr;
 
                   return (
-                    <div key={_id} className={workBox}>
+                    <div key={_id} className={workBox} data-aos="fade-up">
                       <div className={project_image}>
                         <div
                           className={expandProject}
@@ -90,14 +91,12 @@ const Projects = () => {
             )}
           </div>
 
-          <Button
-            title="View All Projects"
-            wrapperStyle={{ marginTop: "30px", display: "flex" }}
-            style={{
-              display: "block",
-              margin: "auto",
-            }}
-          />
+          <Link href="/projects" style={{marginTop: "50px"}}>
+              <Button
+                title="View All Projects"
+                wrapperStyle={{ display: "inline-block" }}
+              />
+          </Link>
         </div>
       </section>
 

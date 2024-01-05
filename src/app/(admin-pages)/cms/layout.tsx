@@ -17,42 +17,42 @@ const menu = [
   {
     name: "Dashboard",
     Icon: <GoHome size={28} />,
-    link: "/cms/dashboard",
+    link: `/cms/dashboard?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
   {
     name: "Projects",
     Icon: <GoProject size={28} />,
-    link: "/cms/projects",
+    link: `/cms/projects?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
   {
     name: "Services",
     Icon: <GrServices size={28} />,
-    link: "/cms/services",
+    link: `/cms/services?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
   {
     name: "Skills",
     Icon: <SiSkillshare size={28} />,
-    link: "/cms/skills",
+    link: `/cms/skills?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
   {
     name: "Testimonial",
     Icon: <GiSkills size={28} />,
-    link: "/cms/testimonials",
+    link: `/cms/testimonials?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
   {
     name: "Categories And Technologies",
     Icon: <MdOutlineCategory size={28} />,
-    link: "/cms/cat-and-tech",
+    link: `/cms/cat-and-tech?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
   {
     name: "About us Page",
     Icon: <SiAboutdotme size={28} />,
-    link: "/cms/about",
+    link: `/cms/about?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
   {
     name: "Contact us Page",
     Icon: <MdOutlineContactPage size={28} />,
-    link: "/cms/contact",
+    link: `/cms/contact?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`,
   },
 ];
 

@@ -103,7 +103,7 @@ const industries = [
 
 const ServiceIndustries = () => {
   return (
-    <section className={serveIndustry}>
+    <section className={serveIndustry} data-aos="fade-down">
       <div className={`${container} dContainer`}>
         <h2>Which Industries Do We Serve?</h2>
         <p>

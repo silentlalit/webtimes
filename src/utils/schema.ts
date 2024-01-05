@@ -62,7 +62,10 @@ export const ServiceSchema = yup.object({
       })
     )
     .required("Service technologies is required, (Atleast one.)"),
-  thumbnail: yup.string().required("thumbnail is required"),
+  thumbnail: yup.mixed()
+    .test('isStringOrFile', "thumbnail is required", (value) => {
+      return typeof value === 'string' || (value instanceof File && value.type.startsWith('image/'));
+    }),
   priceList: yup
     .array()
     .of(
@@ -108,11 +111,9 @@ export const ProjectSchema = yup.object({
       })
     )
     .required("Project technologies is required, (Atleast one.)"),
-  thumbnail: yup
-    .string()
-    .required("thumbnail is required")
-    .test("required", "Please select a thumbnail.", (value: any) => {
-      return value;
+  thumbnail: yup.mixed()
+    .test('isStringOrFile', "thumbnail is required", (value) => {
+      return typeof value === 'string' || (value instanceof File && value.type.startsWith('image/'));
     }),
   github: yup.string().url().label("Path"),
   link: yup.string().url().label("Path"),

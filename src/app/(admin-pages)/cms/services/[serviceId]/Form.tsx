@@ -23,7 +23,7 @@ type ServiceType = {
   title: string;
   description: string;
   technologies: { label: string; value: string }[];
-  thumbnail: string;
+  thumbnail: string | File;
   priceList: {
     type: string;
     name: string;
@@ -99,7 +99,7 @@ const Form = ({ push, serviceId, service, isDisabled }: any) => {
   const { thumbnail, technologies }: any = service || "";
 
   const saveChanges = async (data: ServiceType) => {
-    setLoading(true);
+    // setLoading(true);
     const fd = new FormData();
     const { name, title, description, technologies, thumbnail, priceList } =
       data;
@@ -115,7 +115,7 @@ const Form = ({ push, serviceId, service, isDisabled }: any) => {
       const { payload }: any = await dispatch(createService(fd));
       if (payload.success) {
         toast.success(payload.message);
-        push("/cms/services");
+        push(`/cms/services?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`);
         setLoading(false);
       } else {
         toast.success(payload.error);

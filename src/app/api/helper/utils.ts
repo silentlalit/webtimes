@@ -3,7 +3,8 @@ import fs from "fs";
 import { writeFile } from "fs/promises";
 
 export const uploadImage = async (basepath: string, file: File) => {
-  const buffer = Buffer.from(await file.arrayBuffer());
+  const fileBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(fileBuffer);
   const filename = Date.now() + file.name.replaceAll(" ", "_");
   await writeFile(path.join(process.cwd(), basepath + filename), buffer);
 

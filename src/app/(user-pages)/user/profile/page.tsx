@@ -30,7 +30,7 @@ const {
 } = styles;
 
 const Page = () => {
-  const { logggedInUser: { _id: userId = "", name = "", email = "" } }: any = useAppSelector((state) => state.authUser);
+  const { logggedInUser: { _id: userId = "", name = "", email = "", role = "user" } }: any = useAppSelector((state) => state.authUser);
   const { loading: ordersLoading, orders }: any = useAppSelector(
     (state) => state.order
   );
@@ -96,6 +96,7 @@ const Page = () => {
           <h2>WebTimes Member</h2>
           <h3>Welcome! {name || "user"}</h3>
           <p>{email || "email****@gmail.com"}</p>
+          {role === "admin" && <p><Link className="link" href={`/cms?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`}>Go to Admin Portel</Link></p>}
         </div>
 
         <div className={right}>

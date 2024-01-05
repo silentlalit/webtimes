@@ -79,7 +79,9 @@ const Skills = () => {
                         width={50}
                         height={50}
                       />
-                    }>
+                    }
+                    data-aos="zoom-in"
+                    >
                     <h3>{position}</h3>
                     <h4>Company: {company}</h4>
                     <p dangerouslySetInnerHTML={{ __html: description }} />

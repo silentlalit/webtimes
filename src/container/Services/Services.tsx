@@ -41,10 +41,14 @@ function Services() {
           )}
         </div>
 
-        <Link href={"/contact-us"}>
+        <Link href="/contact-us" style={{marginTop: 60}}>
           <Button
             title="Request a Free Consultation"
-            wrapperStyle={{ marginTop: 70 }}
+            wrapperStyle={{display: "inline-block"}}
+            style={{
+              display: "block",
+              margin: 'auto'
+            }}
           />
         </Link>
       </div>
@@ -86,7 +90,7 @@ const Service = ({ service }: { service: Service }) => {
   const { _id, name, description, thumbnail, technologies } = service;
 
   return (
-    <div className={skillsBox}>
+    <div className={skillsBox} data-aos="fade-up">
       <Image
         src={`/upload/services/${thumbnail}`}
         alt={`${name}`}

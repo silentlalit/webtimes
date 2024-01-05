@@ -34,7 +34,7 @@ const Page = () => {
       <h2>Services</h2>
 
       <Link
-        href="/cms/services/_new"
+        href={`/cms/services/_new?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`}
         style={{ display: "block", width: " max-content" }}>
         <ButtonTag icon={<GrFormAdd />} text="Add new Service" />
       </Link>
@@ -64,7 +64,7 @@ const Page = () => {
 
               <div className={itemEdit}>
                 <span>
-                  <Link href={`/cms/services/${_id}`}>
+                  <Link href={`/cms/services/${_id}?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`}>
                     <AiFillEdit />
                   </Link>
                 </span>

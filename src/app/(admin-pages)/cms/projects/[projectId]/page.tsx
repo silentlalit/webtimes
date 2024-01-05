@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Loader, ButtonTag, Modal, UploadFiles } from "@/components";
+import { useRouter } from "next/navigation";
+import { BiUpload } from "react-icons/bi";
+import { RiArrowGoBackFill } from "react-icons/ri";
 
 // redux
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
@@ -12,10 +15,10 @@ import {
   updateImage,
   updateImages,
 } from "@/redux/slices/projectsSlice";
-import { BiUpload } from "react-icons/bi";
 import Form from "./Form";
 
 function Page({ params }: any) {
+  const { push, back } = useRouter();
   const { projectId } = params;
   const { project, loading } = useAppSelector((state) => state.project);
   const dispatch = useAppDispatch();
@@ -55,11 +58,20 @@ function Page({ params }: any) {
 
   return (
     <div className="cms_editService py-4">
-      <h1>Edit Project</h1>
+      <h2>{projectId !== "_new" ? "Update Service" : "Create Service"}</h2>
+      <hr />
+
       {projectId !== "_new" && loading ? (
         <Loader />
       ) : (
         <div>
+          <ButtonTag
+            icon={<RiArrowGoBackFill />}
+            text="Back to Projects"
+            onClick={() => back()}
+            btnType="type2"
+          />
+          
           {projectId !== "_new" && (
             <ButtonTag
               icon={<BiUpload />}
@@ -68,7 +80,7 @@ function Page({ params }: any) {
             />
           )}
 
-          <Form projectId={projectId} project={project} />
+          <Form push={push} projectId={projectId} project={project} />
         </div>
       )}
 

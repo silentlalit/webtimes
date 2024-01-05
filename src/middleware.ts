@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
 
   const isPublic =
     pathname === "userAuth/login" ||
@@ -10,8 +10,6 @@ export function middleware(request: NextRequest) {
     pathname === "userAuth/verifyemail/:path*";
 
   const adminRoutes = pathname.match(/^\/cms/);
-
-  console.log(adminRoutes);
 
   const token = request.cookies.get("token")?.value;
 
@@ -24,6 +22,12 @@ export function middleware(request: NextRequest) {
   }
 
   if (adminRoutes && token) {
+    const isAdmin = searchParams.get('isAdmin');
+    const adminToken = searchParams.get('adminToken');
+    
+    if(!isAdmin || adminToken !== process.env.NEXT_PUBLIC_ADMIN_ID){
+      return NextResponse.redirect(new URL("/", request.nextUrl));
+    }
   }
 }
 

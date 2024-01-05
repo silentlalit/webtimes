@@ -19,7 +19,7 @@ function CommonSec({ tag, title, content, image, buttonTitle, link }: PropType) 
     return (
         <section className={comSec}>
             <div className={`${container} dContainer`}>
-                <div className={comSec_text}>
+                <div className={comSec_text} data-aos="fade-right">
                     <h4 className='topTag'>{tag}</h4>
                     <h2 dangerouslySetInnerHTML={{ __html: title }} />
                     <p dangerouslySetInnerHTML={{ __html: content }} />
@@ -29,7 +29,7 @@ function CommonSec({ tag, title, content, image, buttonTitle, link }: PropType) 
                     </Link>
                 </div>
 
-                <div className={comSec_image}>
+                <div className={comSec_image} data-aos="fade-left">
                     <Image src={image} alt={title} sizes='500px' fill />
                 </div>
             </div>

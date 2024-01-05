@@ -37,7 +37,7 @@ export const PATCH = async (req: NextRequest, { params }: any) => {
     const project = await Project.findById(id);
 
     if (!project) return ErrorRes(false, "Project id Not found", 400);
-    const isUpload = project.thumbmail === thumbnail;
+    const isUpload = project.thumbmail !== thumbnail;
     const oldThumbnail = project.thumbnail;
 
     // upload thumbnial

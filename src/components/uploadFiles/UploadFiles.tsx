@@ -34,16 +34,26 @@ const UploadFiles = ({
 
     setIsLoading(true);
 
-    const { success, message, error, result } = await uploadImages(filesArr);
-
-    if (success) {
+    try {
+      const { message, result } = await uploadImages(filesArr);
+      
       toast.success(message);
       setResultUrls(result);
       setIsLoading(false);
-    } else {
+    } catch (error:any) {
       toast.error(error);
       setIsLoading(false);
     }
+
+
+    // if (success) {
+    //   toast.success(message);
+    //   setResultUrls(result);
+    //   setIsLoading(false);
+    // } else {
+    //   toast.error(error);
+    //   setIsLoading(false);
+    // }
   };
 
   return (

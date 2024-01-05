@@ -57,14 +57,15 @@ function SingleFileSelect({
             name="myfile"
             value={value?.filename}
             onChange={(e: any) => {
-              const file = e.target.files[0];
+              const fileDoc: File = e.target.files[0];
               let reader = new FileReader();
-              reader.readAsDataURL(file);
+              reader.readAsDataURL(fileDoc);
+              
+              onChange(fileDoc);
 
               reader.onload = (e) => {
                 setImage(`${e.target?.result}`);
                 setFlag(true);
-                onChange(file);
               };
             }}
             {...props}

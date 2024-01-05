@@ -3,6 +3,8 @@
 import React, { Fragment, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import AOS from "aos";
+import 'aos/dist/aos.css';
 
 import "@/app/globals.css";
 import { Footer, Header } from "@/components";
@@ -74,8 +76,9 @@ const App = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    !isAuthenticated &&
-    dispatch(loadUser());
+    AOS.init();
+    
+    !isAuthenticated && dispatch(loadUser());
   }, [dispatch]);
 
   return (

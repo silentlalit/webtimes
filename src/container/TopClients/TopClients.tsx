@@ -48,7 +48,7 @@ const ServiceIndustries = () => {
   };
 
   return (
-    <section className={topClinets}>
+    <section className={topClinets} data-aos="fade-up">
       <div className={`${container} dContainer`}>
         <h2>Our Top Clients</h2>
         <p>
