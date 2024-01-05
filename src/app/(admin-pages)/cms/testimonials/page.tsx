@@ -32,14 +32,14 @@ const Page = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchTestimonials());
-  }, [dispatch]);
+    !testimonials.length && dispatch(fetchTestimonials());
+  }, [dispatch, testimonials.length]);
 
   return (
     <div className={cms_servicesPage}>
       <h1>Testimonials</h1>
 
-      <Link href="/cms/testimonials/_new">
+      <Link href={`/cms/testimonials/_new?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`}>
         <ButtonTag icon={<GrFormAdd color="#fff" />} text="Add new Review" />
       </Link>
 
@@ -51,7 +51,7 @@ const Page = () => {
             <div key={_id} className={serviceLisItem}>
               <div className={itemTitle}>
                 <Image
-                  src={`${avatar}`}
+                  src={`/upload/reviews/${avatar}`}
                   width={50}
                   height={50}
                   alt={name}
@@ -66,7 +66,7 @@ const Page = () => {
 
               <div className={itemEdit}>
                 <span>
-                  <Link href={`/cms/testimonials/${_id}`}>
+                  <Link href={`/cms/testimonials/${_id}?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`}>
                     <AiFillEdit />
                   </Link>
                 </span>

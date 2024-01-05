@@ -88,7 +88,7 @@ const Form = ({ skill, skillId }: any) => {
 
       if (payload.success) {
         toast.success(payload.message);
-        push("/cms/skills");
+        push(`/cms/skills?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`);
         setLoading(false);
       } else {
         toast.error(payload.error);
@@ -99,7 +99,7 @@ const Form = ({ skill, skillId }: any) => {
       const { payload }: any = await dispatch(updateSkill(fd));
       if (payload.success) {
         toast.success(payload.message);
-        push("/cms/skills");
+        push(`/cms/skills?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`);
         setLoading(false);
       } else {
         toast.error(payload.error);

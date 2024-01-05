@@ -20,25 +20,38 @@ const {
 const faqsData: Faq[] = [
   {
     id: "1",
-    title: "Lorem ipsum dolor sit amet,",
-    content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed tempor sem. Aenean vel turpis feugiat,
-          ultricies metus at, consequat velit. Curabitur est nibh, varius in tellus nec, mattis pulvinar metus.
-          In maximus cursus lorem, nec laoreet velit eleifend vel. Ut aliquet mauris tortor, sed egestas libero interdum vitae.
-          Fusce sed commodo purus, at tempus turpis.`,
+    title: "I am new to this whole thing what should I do?",
+    content: `You will basically need a domain name and a hosting service to start with.
+    <br /><br />
+    If you don’t have any idea or need my help in any step, then feel free to <Link href="/contact-us">contact us</Link>, we will make sure to guide you step-by-step to get started with your website.`,
   },
   {
     id: "2",
-    title: "Nunc maximus, magna at ultricies elementum",
-    content:
-      "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam, vitae convallis ex tortor sed dolor.",
+    title: "Will I be able to update the site myself when it’s finished?",
+    content: "Yes, we will make the website editable as per your needs. You will have full control to the code and backend of the website. <br /> However, not every part of the website would be editable and you might need our development team to do it for you. We charge on hourly basis without rates being $95/hr.",
   },
   {
     id: "3",
-    title: "Curabitur laoreet, mauris vel blandit fringilla",
-    content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-        Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-        Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-        Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
+    title: "Do you provide website domain and hosting service?",
+    content: `No, it would be your responsibility to get these services before we start the project.
+    <br /><br />
+    But, we can recommend to you the best available domain provider and hosting company that we personally use and also recommend to all our clients.`,
+  },
+  {
+    id: "4",
+    title: "I don't have any content (text or images or logo).",
+    content: `Website Content: We will write compelling website content which would be optimized to get you more leads & sales.
+    <br /><br />
+    Images: Having subscriptions to premium stock image websites, we use them on our client's websites.
+    <br /><br />
+    Company Logo: As we are a specialist in website design only, hence we can't make logos. But don't worry, we know amazing logo designers and we will outsource the work to them. They are known for making amazing designs and are also really affordable.`,
+  },
+  {
+    id: "5",
+    title: "How much input do I have in the website design process?",
+    content: `We will discuss a lot of questions regarding your business. The more we discuss, the better we get to know your business, the goals that you have with it and the better off the website would come out to be.
+    <br /><br />
+    We won’t compromise with discussing in details about your business, so you finally get the best website possible.`,
   },
 ];
 
@@ -83,7 +96,7 @@ const Accordian = ({ id, title, content }: Faq) => {
       </div>
 
       <div ref={contentRef} className={`${active ? open : null} ${faqContent}`}>
-        <p>{content}</p>
+        <p dangerouslySetInnerHTML={{__html: content}} />
       </div>
     </div>
   );

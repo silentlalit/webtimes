@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import Image from "next/image";
 
@@ -8,7 +8,7 @@ import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Testimonial } from "../../utils/interface";
 
 import styles from "./Testimonials.module.scss";
-// import { useAppSelector } from "@/redux/hook";
+import { useAppSelector } from "@/redux/hook";
 const {
   testimonial_section,
   container,
@@ -20,69 +20,70 @@ const {
   review_content,
 } = styles;
 
-const testimonials: Testimonial[] = [
-  {
-    _id: "1",
-    name: "Arjun",
-    comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
-        lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-    rating: 5,
-    avatar:
-      "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
-    serviceCat: {
-      label: "ui/ux",
-      value: "UI/Ux",
-    },
-  },
-  {
-    _id: "2",
-    name: "Arjun",
-    comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
-        lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
-        lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-    rating: 5,
-    avatar:
-      "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
-    serviceCat: {
-      label: "ui/ux",
-      value: "UI/Ux",
-    },
-  },
-  {
-    _id: "3",
-    name: "Arjun",
-    comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
-        lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-    rating: 5,
-    avatar:
-      "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
-    serviceCat: {
-      label: "ui/ux",
-      value: "UI/Ux",
-    },
-  },
-  {
-    _id: "4",
-    name: "Arjun",
-    comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
-        lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-    rating: 5,
-    avatar:
-      "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
-    serviceCat: {
-      label: "ui/ux",
-      value: "UI/Ux",
-    },
-  },
-];
+// const testimonials: Testimonial[] = [
+//   {
+//     _id: "1",
+//     name: "Arjun",
+//     comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
+//         lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
+//         Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+//     rating: 5,
+//     avatar:
+//       "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
+//     serviceCat: {
+//       label: "ui/ux",
+//       value: "UI/Ux",
+//     },
+//   },
+//   {
+//     _id: "2",
+//     name: "Arjun",
+//     comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
+//         lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
+//         Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
+//         lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
+//         Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+//     rating: 5,
+//     avatar:
+//       "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
+//     serviceCat: {
+//       label: "ui/ux",
+//       value: "UI/Ux",
+//     },
+//   },
+//   {
+//     _id: "3",
+//     name: "Arjun",
+//     comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
+//         lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
+//         Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+//     rating: 5,
+//     avatar:
+//       "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
+//     serviceCat: {
+//       label: "ui/ux",
+//       value: "UI/Ux",
+//     },
+//   },
+//   {
+//     _id: "4",
+//     name: "Arjun",
+//     comment: `Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut
+//         lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit.
+//         Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+//     rating: 5,
+//     avatar:
+//       "https://static.wixstatic.com/media/60aa73_f7ef8dc0e0554fc7a86907d5e5ae0de8~mv2.png/v1/fill/w_400,h_400,al_c/coming-soon.png",
+//     serviceCat: {
+//       label: "ui/ux",
+//       value: "UI/Ux",
+//     },
+//   },
+// ];
 
 const Testimonials = ({ breakPoints }: any) => {
-  // const {} = useAppSelector((state) => state.testimonial);
+  const {testimonials, loading} = useAppSelector((state) => state.testimonial);
+
   const breakPointsObj = breakPoints || {
     300: {
       slidesPerView: 1,
@@ -124,10 +125,10 @@ const Testimonials = ({ breakPoints }: any) => {
                         justifyContent: "center",
                       }}>
                       <Image
-                        src={`${avatar}`}
+                        src={`/upload/reviews/${avatar}`}
                         alt={`${name}`}
-                        width={100}
-                        height={100}
+                        width={80}
+                        height={80}
                         object-fit="contain"
                       />
                     </div>

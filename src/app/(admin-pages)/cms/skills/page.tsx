@@ -33,7 +33,7 @@ const Page = () => {
     <div className={cms_servicesPage}>
       <h1>Skills</h1>
 
-      <Link href="/cms/skills/new">
+      <Link href={`/cms/skills/_new?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`}>
         <ButtonTag icon={<GrFormAdd />} text="Add new Skill" />
       </Link>
 
@@ -62,7 +62,7 @@ const Page = () => {
 
               <div className={itemEdit}>
                 <span>
-                  <Link href={`/cms/skills/${_id}`}>
+                  <Link href={`/cms/skills/${_id}?isAdmin=${true}&adminToken=${process.env.NEXT_PUBLIC_ADMIN_ID}`}>
                     <AiFillEdit />
                   </Link>
                 </span>

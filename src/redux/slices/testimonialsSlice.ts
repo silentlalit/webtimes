@@ -36,7 +36,7 @@ export const getTestimonial = createAsyncThunk(
 
 export const createTestimonial = createAsyncThunk(
   "testimonials/createTestimonial",
-  async (body: Testimonial) => {
+  async (body: any) => {
     const { data } = await instance.post("/testimonials", body);
     return data;
   }
@@ -44,8 +44,11 @@ export const createTestimonial = createAsyncThunk(
 
 export const updateTestimonial = createAsyncThunk(
   "testimonials/updateTestimonial",
-  async (body: Testimonial) => {
-    const { data } = await instance.patch(`/testimonials/${body._id}`, body);
+  async (body: any) => {
+    const id = body.get("id");
+    body.delete("id");
+
+    const { data } = await instance.patch(`/testimonials/${id}`, body);
     return data;
   }
 );
@@ -61,7 +64,11 @@ export const deleteTestimonial = createAsyncThunk(
 export const ReviewsSlice = createSlice({
   name: "testimonials",
   initialState,
-  reducers: {},
+  reducers: {
+    clearTestimonial: (state) => {
+      state.testimonial = null;
+    },
+  },
   extraReducers: (builder) => {
     // GET a single Testimonial
     builder
@@ -161,4 +168,5 @@ export const ReviewsSlice = createSlice({
   },
 });
 
+export const { clearTestimonial } = ReviewsSlice.actions;
 export default ReviewsSlice.reducer;

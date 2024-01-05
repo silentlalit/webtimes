@@ -14,7 +14,7 @@ function Page({ params }: any) {
   const { skill, loading } = useAppSelector((state) => state.skill);
 
   useEffect(() => {
-    if (skillId !== "new") dispatch(getSkill(skillId));
+    if (skillId !== "_new") dispatch(getSkill(skillId));
 
     return () => {
       dispatch(clearSkill());
@@ -23,8 +23,10 @@ function Page({ params }: any) {
 
   return (
     <div className="cms_editService">
-      <h1>Edit Skill</h1>
-      {loading && skillId !== "new" ? (
+      <h2>{skillId !== "_new" ? "Update Skill" : "Create Skill"}</h2>
+      <hr />
+
+      {loading && skillId !== "_new" ? (
         <Loader />
       ) : (
         <Form skill={skill} skillId={skillId} />

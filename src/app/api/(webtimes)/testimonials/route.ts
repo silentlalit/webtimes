@@ -4,6 +4,8 @@ import Error from "../../middleware/Error";
 import ApiFeatures from "../../helper/ApiFeatures";
 import Testimonial from "../../models/testimonial";
 import { connectDb } from "../../middleware/mongoose";
+import { ErrorRes } from "../../helper/ErrorRes";
+import { deleteImage, uploadImage } from "../../helper/utils";
 
 // GET all Servces
 export const GET = async (req: NextRequest) => {
@@ -35,14 +37,33 @@ export const GET = async (req: NextRequest) => {
 
 // CREATE a testimonial
 export const POST = async (req: NextRequest) => {
+  let ifErrorDelete = "";
+
   try {
     await connectDb();
-    const bodyData = await req.json();
-    const testimonial = await Testimonial.create(bodyData);
 
-    return NextResponse.json({ success: true, testimonial }, { status: 200 });
+    const formData = await req.formData();
+    const avatar: any = formData.get("avatar");
+    if (!avatar) return ErrorRes(false, "No files received.", 400);
+
+    // upload a review avatar
+    const filename = await uploadImage("public/upload/reviews/", avatar);
+    ifErrorDelete = filename;
+
+    const testimonialData = Object.fromEntries(formData);
+    testimonialData.avatar = filename;
+
+    const testimonial = await Testimonial.create(testimonialData);
+
+    if (!testimonial) {
+      deleteImage("public/upload/reviews/", filename);
+      return ErrorRes(false, "Something went wrong!", 400);
+    }
+
+    return NextResponse.json({ success: true, testimonial, message: "testimonial created.", }, { status: 200 });
   } catch (error: any) {
-    console.log(error);
-    return Error(error);
+    console.log(error)
+    deleteImage("public/upload/reviews/", ifErrorDelete);
+    return ErrorRes(false, error.message, 500);
   }
 };

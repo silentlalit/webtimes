@@ -24,7 +24,7 @@ function OurTeam() {
             and mobile app development works tirelessly to help your business
             grow. All we await is an opportunity to help. Thank you for all the
             support and love. We hope to serve you soon. Learn more about{" "}
-            <Link href="/about" style={{ color: "rgb(92, 159, 247)" }}>
+            <Link href="/about-us" style={{ color: "rgb(92, 159, 247)" }}>
               webtimes
             </Link>
           </p>

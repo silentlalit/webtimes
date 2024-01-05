@@ -11,7 +11,7 @@ function loading() {
         muted
         loop
         style={{ width: "100%", height: "100vh" }}>
-        <source src="/videos/comming_soon.mp4" type="video/mp4" />
+        <source src="/videos/loading_page.mp4" type="video/mp4" />
       </video>
     </div>
   );

@@ -162,16 +162,10 @@ export const TestimonialSchema = yup.object({
     .string()
     .matches(numberRegExp, "Number is not valid")
     .required("Rating is required."),
-  serviceCat: yup
-    .object({
-      label: yup.string(),
-      value: yup.string(),
-    })
-    .required("Service Category is required, (Atleast one.)"),
   avatar: yup
     .mixed()
     .test("required", "Please select a review image.", (value: any) => {
-      return value && value.length;
+      return value;
     }),
 });
 
