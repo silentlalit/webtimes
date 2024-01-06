@@ -35,6 +35,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
         user_id: user_id,
       },
       addTrailingSlash: false,
+      transports: ['websocket']
     });
 
     socketInstance.on("connect", () => {
