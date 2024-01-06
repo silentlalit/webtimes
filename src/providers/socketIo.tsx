@@ -35,14 +35,13 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
         user_id: user_id,
       },
       // transports: ['websocket'],
-      addTrailingSlash: false,
-      extraHeaders: {
-        'Access-Control-Allow-Origin': '*'
-      }
+      // addTrailingSlash: false,
+      // extraHeaders: {
+      //   'Access-Control-Allow-Origin': '*'
+      // }
     });
 
     socketInstance.on("connect", () => {
-      console.log(">>>>connecting")
       setIsConnected(true);
     });
 
@@ -107,10 +106,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     //   }
     // });
 
-    console.log(socket)
-
     return () => {
-      console.log(">>>>",socket)
       if (socket?.readyState === 1) {
         socket?.off("new_message");
         socket.on("end", (e:any) => {
