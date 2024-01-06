@@ -34,7 +34,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
       query: {
         user_id: user_id,
       },
-      // transports: ['websocket'],
+      transports: ['websocket'],
       // addTrailingSlash: false,
       // extraHeaders: {
       //   'Access-Control-Allow-Origin': '*'
