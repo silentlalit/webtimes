@@ -34,7 +34,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
       query: {
         user_id: user_id,
       },
-      // addTrailingSlash: false,
+      addTrailingSlash: false,
     });
 
     socketInstance.on("connect", () => {

@@ -35,7 +35,7 @@ const ioHandler = async (req: NextApiRequest, res: CustomNextResponse) => {
 
     const io = new SocketIoServer(httpServer, {
       path: "/api/socket/io",
-      // addTrailingSlash: false,
+      addTrailingSlash: false,
       pingTimeout: 60000
     });
 
