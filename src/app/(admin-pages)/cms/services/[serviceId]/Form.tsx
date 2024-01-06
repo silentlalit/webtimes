@@ -23,7 +23,7 @@ type ServiceType = {
   title: string;
   description: string;
   technologies: { label: string; value: string }[];
-  thumbnail: string | File;
+  thumbnail: string | File | any;
   priceList: {
     type: string;
     name: string;

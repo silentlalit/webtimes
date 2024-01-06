@@ -62,10 +62,11 @@ export const ServiceSchema = yup.object({
       })
     )
     .required("Service technologies is required, (Atleast one.)"),
-  thumbnail: yup.mixed()
-    .test('isStringOrFile', "thumbnail is required", (value) => {
-      return typeof value === 'string' || (value instanceof File && value.type.startsWith('image/'));
-    }),
+  thumbnail: yup.string().required("thumbnail is required") || yup.object().required("thumbnail is required"),
+  // yup.mixed()
+  //   .test('isStringOrFile', "thumbnail is required", (value) => {
+  //     return typeof value === 'string' || (value instanceof File && value.type.startsWith('image/'));
+  //   }),
   priceList: yup
     .array()
     .of(
