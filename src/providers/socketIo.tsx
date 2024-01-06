@@ -34,11 +34,11 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
       query: {
         user_id: user_id,
       },
+      transports: ['websocket'],
       addTrailingSlash: false,
       extraHeaders: {
         'Access-Control-Allow-Origin': '*'
       }
-      // transports: ['websocket']
     });
 
     socketInstance.on("connect", () => {
@@ -50,14 +50,14 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     socketInstance.on("error", (error: any) => {
-      console.log(error.message);
-      toast.error(error.message);
+      toast.error("WebSocket error: " + error.message);
       console.error("WebSocket error:", error);
       setIsConnected(false);
     });
 
     socketInstance.on("connect_error", (error: any) => {
-      toast.error("WebSocket error:", error.message);
+      console.log(error.message);
+      toast.error(error.message);
       console.error("WebSocket error:", error);
       setIsConnected(false);
     });
