@@ -29,7 +29,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const user_id = localStorage.getItem("user_id");
 
-    const socketInstance = ClientIO(`${process.env.NEXT_PUBLIC_APP_URL}`, {
+    const socketInstance = ClientIO(`${process.env.NEXT_PUBLIC_SOCKET_URL}`, {
       path: "/api/socket/io",
       query: {
         user_id: user_id,
