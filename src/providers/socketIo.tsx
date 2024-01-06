@@ -34,7 +34,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
       query: {
         user_id: user_id,
       },
-      transports: ['websocket'],
+      // transports: ['websocket'],
       addTrailingSlash: false,
       extraHeaders: {
         'Access-Control-Allow-Origin': '*'
@@ -42,6 +42,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     socketInstance.on("connect", () => {
+      console.log(">>>>connecting")
       setIsConnected(true);
     });
 
@@ -50,14 +51,13 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     socketInstance.on("error", (error: any) => {
-      toast.error("WebSocket error: " + error.message);
+      toast.error(`WebSocket error: ${error.message}`);
       console.error("WebSocket error:", error);
       setIsConnected(false);
     });
 
     socketInstance.on("connect_error", (error: any) => {
-      console.log(error.message);
-      toast.error(error.message);
+      toast.error(`WebSocket error: ${error.message}`);
       console.error("WebSocket error:", error);
       setIsConnected(false);
     });
@@ -107,12 +107,17 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     //   }
     // });
 
+    console.log(socket)
+
     return () => {
-      socketInstance?.off("new_message");
-      socketInstance.on("end", (e) => {
-        console.log(e)
-      });
-      socketInstance.disconnect();
+      console.log(">>>>",socket)
+      if (socket?.readyState === 1) {
+        socket?.off("new_message");
+        socket.on("end", (e:any) => {
+          console.log(e)
+        });
+        socket.disconnect();
+      }
     };
   }, [dispatch]);
 

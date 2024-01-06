@@ -56,7 +56,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   );
   const [openMenu, setOpenMenu] = useState(false);
 
-  useEffect(() => { setOpenMenu(false) }, [pathname]);
+  useEffect(() => { 
+    setOpenMenu(false);
+  }, [pathname]);
 
   const handleOpenMenu = () => setOpenMenu(!openMenu);
 
