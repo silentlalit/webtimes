@@ -35,6 +35,9 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
         user_id: user_id,
       },
       addTrailingSlash: false,
+      extraHeaders: {
+        'Access-Control-Allow-Origin': '*'
+      }
       // transports: ['websocket']
     });
 
@@ -54,8 +57,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     socketInstance.on("connect_error", (error: any) => {
-      console.log(error.message);
-      toast.error(error.message);
+      toast.error("WebSocket error:", error.message);
       console.error("WebSocket error:", error);
       setIsConnected(false);
     });
