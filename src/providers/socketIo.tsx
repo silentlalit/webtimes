@@ -35,7 +35,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
         user_id: user_id,
       },
       addTrailingSlash: false,
-      transports: ['websocket']
+      // transports: ['websocket']
     });
 
     socketInstance.on("connect", () => {
@@ -106,7 +106,6 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     // });
 
     return () => {
-      console.log("going out to user layout")
       socketInstance?.off("new_message");
       socketInstance.on("end", (e) => {
         console.log(e)
@@ -121,24 +120,3 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     </SocketContext.Provider>
   );
 };
-
-// import { io } from "socket.io-client";
-
-// let socket: any;
-
-// const connectSocket = async ({ user_id }: { user_id: string }) => {
-//   socket = io(`${process.env.NEXT_PUBLIC_SOCKET_URL}/socket/io`, {
-//     path: "/api/socket/io",
-//     query: {
-//       user_id: user_id,
-//     },
-//   });
-
-//   console.log(socket);
-
-//   socket.on("connect", () => {
-//     console.log("connected");
-//   });
-// };
-
-// export { socket, connectSocket };
