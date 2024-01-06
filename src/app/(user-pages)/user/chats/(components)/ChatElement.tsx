@@ -76,7 +76,7 @@ const ChatElement = ({
           </div>
         </div>
         <div className="flex" style={{ flexDirection: "column", gap: 8 }}>
-          {time && <h5 style={{ fontWeight: 600 }}>{showTime(time)}</h5>}
+          {time && <h5 style={{ fontWeight: 400, fontSize: 12 }}>{showTime(time)}</h5>}
           {unread ? <div className="unread-count">{unread}</div> : null}
         </div>
       </div>
