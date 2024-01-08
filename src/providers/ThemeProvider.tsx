@@ -1,14 +1,20 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect } from 'react';
-import toast from 'react-hot-toast';
 
-const ThemeContext = createContext<any>({});
+type Theme = {
+    [key: string]: string;
+};
+
+const ThemeContext = createContext<{ theme: Theme; setTheme: React.Dispatch<React.SetStateAction<Theme>> }>({
+    theme: {},
+    setTheme: () => {},
+});
 
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setTheme] = useState<any>({
+    const [theme, setTheme] = useState<Theme>({
         '--primary-color': '#ff5e69',
         '--secondary-color': '#b16cea',
         '--ternary-color': '#ff8a56',

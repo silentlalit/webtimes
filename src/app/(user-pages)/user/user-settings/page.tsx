@@ -4,7 +4,7 @@ import React from 'react';
 import { useTheme } from '@/providers/ThemeProvider';
 import './page.scss';
 
-const page = () => {
+const Settings = () => {
     const { theme, setTheme } = useTheme();
 
     const changeInputHandle = function (
@@ -73,4 +73,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Settings;
