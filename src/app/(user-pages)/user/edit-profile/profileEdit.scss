@@ -1,0 +1,28 @@
+.editProfilePage{
+    max-width: 800px;
+    width: 100%;
+    padding: 80px 0;
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .updateAddress{
+        header{
+            padding: 15px;
+        }
+    }
+
+    .updateProfileBox{
+        max-width: 100px;
+        width: 100%;
+        display: block;
+        margin: auto;
+
+        // input{
+        //     visibility: hidden;
+        // }
+    }
+}

@@ -78,10 +78,11 @@ const Header = () => {
                   className={profileIcon}
                   onClick={() => setOpenProfile(!openProfile)}>
                   <Image
-                    src={logggedInUser.avatar}
+                    src={`/upload/avatar/${logggedInUser.avatar}`}
                     width={40}
                     height={40}
                     alt={logggedInUser.username}
+                    objectFit="cover"
                   />
                   <span>{logggedInUser.username}</span>
                 </li>
@@ -205,10 +206,11 @@ const Header = () => {
                     className={profileIcon}
                     onClick={() => setOpenProfile(!openProfile)}>
                     <Image
-                      src={logggedInUser.avatar}
+                      src={`/upload/avatar/${logggedInUser.avatar}`}
                       width={40}
                       height={40}
                       alt={logggedInUser.username}
+                      objectFit="cover"
                     />
                     <span>{logggedInUser.username}</span>
                   </li>

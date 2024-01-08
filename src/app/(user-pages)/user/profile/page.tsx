@@ -103,11 +103,13 @@ const Page = () => {
           <Link href="/user/edit-profile">
             <Button title="Edit profile" icon={<FiEdit2 size={20} />} />
           </Link>
-          <Button
-            title="Help & Settings"
-            icon={<LuSettings size={20} />}
-            btnType="type2"
-          />
+          <Link href="/user/user-settings">
+            <Button
+              title="Help & Settings"
+              icon={<LuSettings size={20} />}
+              btnType="type2"
+            />
+          </Link>
         </div>
       </header>
 

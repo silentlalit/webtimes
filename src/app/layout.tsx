@@ -23,6 +23,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const toastOptions = {
   // Define default options
@@ -51,19 +52,21 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       <head />
 
       <body>
-        <StoreProvider>
-          {pathname?.match(/^\/userAuth/) ||
-          pathname?.match(/^\/user/) ||
-          pathname?.match(/^\/cms/) ? (
-            <App>{children}</App>
-          ) : (
-            <Fragment>
-              <Header />
+        <ThemeProvider>
+          <StoreProvider>
+            {pathname?.match(/^\/userAuth/) ||
+            pathname?.match(/^\/user/) ||
+            pathname?.match(/^\/cms/) ? (
               <App>{children}</App>
-              <Footer />
-            </Fragment>
-          )}
-        </StoreProvider>
+            ) : (
+              <Fragment>
+                <Header />
+                <App>{children}</App>
+                <Footer />
+              </Fragment>
+            )}
+          </StoreProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
 function UserPage() {
-  return <div>User Page</div>;
+    return <div>User Page</div>;
 }
 
 export default UserPage;

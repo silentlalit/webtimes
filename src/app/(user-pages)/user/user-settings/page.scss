@@ -1,0 +1,27 @@
+.userSettingsPage{
+    width: 100%;
+    padding: 80px 0;
+}
+
+.themeColorsSettings{
+    margin-top: 50px;
+
+    .wrapper{
+        margin-top: 35px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .box{
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+
+        input{
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+    }
+}

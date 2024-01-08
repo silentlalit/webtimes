@@ -1,69 +1,69 @@
-import { Schema, model, models } from "mongoose";
-import validator from "validator";
+import { Schema, model, models } from 'mongoose';
+import validator from 'validator';
 
 // const bcryptjs = require("bcryptjs"); // to crypt password
 // const jwt = require("jsonwebtoken"); // to generate jwt token
 // const crypto = require("crypto"); // buildIn module already exist
 
 const userModel = new Schema(
-  {
-    name: {
-      type: String,
-      required: [true, "Please enter name"],
-    },
-    username: {
-      type: String,
-      maxLength: [30, "username can not exceed 30 characters"],
-      minLength: [3, "username should have 4 characters"],
-    },
-    email: {
-      type: String,
-      required: [true, "Email is required"],
-      unique: true,
-      validate: [validator.isEmail, "Please enter valid email Id"],
-    },
-    password: {
-      type: String,
-      required: [true, "Password is required"],
-      minLength: [8, "Password should be gtreater then 8 characters"],
-      select: false,
-    },
-    avatar: {
-      type: String,
-      default: "/user.png",
-    },
-    number: {
-      type: String,
-    },
-    address: {
-      fullName: String,
-      companyName: String,
-      country: String,
-      state: String,
-      city: String,
-      address: String,
-      zipCode: String,
-    },
-    role: {
-      type: String,
-      default: "user",
-    },
-    socket_id: {
-      type: String || null,
-    },
-    status: {
-      type: String,
-      default: "Offline",
-    },
-    conversation_id: {
-      type: String || null,
-      default: null,
-    },
+    {
+        name: {
+            type: String,
+            required: [true, 'Please enter name'],
+        },
+        username: {
+            type: String,
+            maxLength: [30, 'username can not exceed 30 characters'],
+            minLength: [3, 'username should have 4 characters'],
+        },
+        email: {
+            type: String,
+            required: [true, 'Email is required'],
+            unique: true,
+            validate: [validator.isEmail, 'Please enter valid email Id'],
+        },
+        password: {
+            type: String,
+            required: [true, 'Password is required'],
+            minLength: [8, 'Password should be gtreater then 8 characters'],
+            select: false,
+        },
+        avatar: {
+            type: String,
+            default: '/user.png',
+        },
+        number: {
+            type: String,
+        },
+        address: {
+            fullName: String,
+            companyName: String,
+            country: String,
+            state: String,
+            city: String,
+            address: String,
+            zipCode: String,
+        },
+        role: {
+            type: String,
+            default: 'user',
+        },
+        socket_id: {
+            type: String || null,
+        },
+        status: {
+            type: String,
+            default: 'Offline',
+        },
+        conversation_id: {
+            type: String || null,
+            default: null,
+        },
 
-    forgotPasswordToken: String,
-    forgotPasswordTokenExpiry: Date,
-  },
-  { timestamps: true }
+        forgotPasswordToken: String,
+        forgotPasswordTokenExpiry: Date,
+    },
+    { timestamps: true }
 );
 
 // userModel.pre("save", async function (next: any) {
@@ -105,5 +105,5 @@ const userModel = new Schema(
 //   return resetToken;
 // };
 
-const User = models.User || model("User", userModel);
+const User = models.User || model('User', userModel);
 export default User;
