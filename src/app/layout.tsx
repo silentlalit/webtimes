@@ -52,11 +52,11 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       <head />
 
       <body>
-        <ThemeProvider>
-          <StoreProvider>
+        <StoreProvider>
+          <ThemeProvider>
             {pathname?.match(/^\/userAuth/) ||
-            pathname?.match(/^\/user/) ||
-            pathname?.match(/^\/cms/) ? (
+              pathname?.match(/^\/user/) ||
+              pathname?.match(/^\/cms/) ? (
               <App>{children}</App>
             ) : (
               <Fragment>
@@ -65,8 +65,8 @@ function RootLayout({ children }: { children: React.ReactNode }) {
                 <Footer />
               </Fragment>
             )}
-          </StoreProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );
@@ -75,12 +75,12 @@ function RootLayout({ children }: { children: React.ReactNode }) {
 export default RootLayout;
 
 const App = ({ children }: { children: React.ReactNode }) => {
-  const {isAuthenticated} = useAppSelector(state => state.authUser)
+  const { isAuthenticated } = useAppSelector(state => state.authUser)
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     AOS.init();
-    
+
     !isAuthenticated && dispatch(loadUser());
   }, [dispatch, isAuthenticated]);
 

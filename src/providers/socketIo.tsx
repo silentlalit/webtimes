@@ -39,7 +39,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
                 // transports: ['websocket'],
                 addTrailingSlash: false,
                 extraHeaders: {
-                  'Access-Control-Allow-Origin': '*'
+                    'Access-Control-Allow-Origin': '*'
                 }
             }
         )
@@ -119,7 +119,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
                 socket.disconnect()
             }
         }
-    }, [dispatch, socket])
+    }, [dispatch])
 
     return (
         <SocketContext.Provider value={{ socket, isConnected }}>

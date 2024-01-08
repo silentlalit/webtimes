@@ -5,16 +5,17 @@ import { useTheme } from '@/providers/ThemeProvider';
 import './page.scss';
 
 const Settings = () => {
-    const { theme, setTheme } = useTheme();
+    const { clrTheme, setClrTheme } = useTheme();
 
     const changeInputHandle = function (
         e: React.ChangeEvent<HTMLInputElement>,
         property: string
     ) {
-        setTheme((prev: any) => ({
+        setClrTheme((prev: any) => ({
             ...prev,
             [property]: e,
         }));
+
     };
 
     const debounce = (
@@ -46,7 +47,7 @@ const Settings = () => {
                 <h4>Change Theme Colors</h4>
 
                 <div className="wrapper">
-                    {Object.keys(theme).map((property, i) => {
+                    {Object.keys(clrTheme).map((property, i) => {
                         return (
                             <div className="box" key={i}>
                                 <label htmlFor={`${property}`}>
@@ -54,7 +55,7 @@ const Settings = () => {
                                 </label>
                                 <input
                                     type="color"
-                                    value={theme[property]}
+                                    value={clrTheme[property]}
                                     name={`${property}`}
                                     id={`${property}`}
                                     onChange={(e: any) =>

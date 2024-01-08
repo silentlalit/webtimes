@@ -3,11 +3,27 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./sidebar.module.scss";
+import { AiOutlineLogout } from "react-icons/ai";
+import { useAppDispatch } from "@/redux/hook";
+import { logout } from "@/redux/slices/authSlice";
+import toast from "react-hot-toast";
 
 const { sideMenuContainer, sideMenuContainerHover, sideMenu, openMenuClass } = styles;
 
 const Sidebar = ({ menu, openMenu }: any) => {
+  const dispatch = useAppDispatch();
   const [isHover, setIsHover] = useState(false);
+
+  const SignOut = async () => {
+    try {
+      await dispatch(logout());
+      
+      toast.success("Logged Out.")
+    } catch (error:any) {
+      toast.error(`Failed: ${error.message}`)
+    }
+
+  }
 
   return (
     <div
@@ -25,6 +41,10 @@ const Sidebar = ({ menu, openMenu }: any) => {
             </li>
           </Link>
         ))}
+        <li onClick={SignOut}>
+          <AiOutlineLogout size={30} color="var(--red-color)" />
+          <span style={{color: "var(--red-color)"}}>Log Out</span>
+        </li>
       </ul>
     </div>
   );

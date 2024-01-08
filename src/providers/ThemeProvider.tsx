@@ -6,15 +6,15 @@ type Theme = {
     [key: string]: string;
 };
 
-const ThemeContext = createContext<{ theme: Theme; setTheme: React.Dispatch<React.SetStateAction<Theme>> }>({
-    theme: {},
-    setTheme: () => {},
+const ThemeContext = createContext<{ clrTheme: Theme; setClrTheme: React.Dispatch<React.SetStateAction<Theme>> }>({
+    clrTheme: {},
+    setClrTheme: () => {},
 });
 
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setTheme] = useState<Theme>({
+    const [clrTheme, setClrTheme] = useState<Theme>({
         '--primary-color': '#ff5e69',
         '--secondary-color': '#b16cea',
         '--ternary-color': '#ff8a56',
@@ -39,16 +39,17 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     // };
 
     useEffect(() => {
-        for (const property in theme) {
+        console.log("first")
+        for (const property in clrTheme) {
             document.documentElement.style.setProperty(
                 property,
-                theme[property]
+                clrTheme[property]
             );
         }
-    }, [theme]);
+    }, [clrTheme]);
 
     return (
-        <ThemeContext.Provider value={{ theme, setTheme }}>
+        <ThemeContext.Provider value={{ clrTheme, setClrTheme }}>
             {children}
         </ThemeContext.Provider>
     );

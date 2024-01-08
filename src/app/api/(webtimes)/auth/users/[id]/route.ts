@@ -44,7 +44,7 @@ export async function PATCH(
     if (!user) {
       return NextResponse.json(
         { success: false, error: "User not Updated, something went wrong." },
-        { status: 401 }
+        { status: 400 }
       );
     }
 
