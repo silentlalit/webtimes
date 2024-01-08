@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import Tag from "../Tag";
+import React, { useEffect, useState } from 'react';
+import Tag from '../Tag';
 
 const styles = {
   defaultWrapperStyle: {
-    width: "100%",
+    width: '100%',
     margin: 10,
     marginLeft: 0,
-    cursor: "pointer",
-    display: "flex",
+    cursor: 'pointer',
+    display: 'flex',
     gap: 8,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
   defaultStyle: {
-    backgroundColor: "var(--white-color)",
-    color: "var(--white-color)",
-    padding: "8px 10px",
+    backgroundColor: 'var(--white-color)',
+    color: 'var(--white-color)',
+    padding: '8px 10px',
     fontSize: 16,
     borderRadius: 5,
-    boxShadow: "0px 0px 1px var(--exLightGray-color)",
+    boxShadow: '0px 0px 1px var(--exLightGray-color)',
   },
 };
 
@@ -45,7 +45,7 @@ function SelectTags({
 
   useEffect(() => {
     onChange(selectedTags);
-  }, [selectedTags, onChange]);
+  }, [selectedTags]);
 
   const isSelected = (item: Option) =>
     selectedTags.find((option) => option.value === item.value);
@@ -58,7 +58,9 @@ function SelectTags({
           : [...prev, option];
       });
     } else {
-      isSelected(option) ? setSelectedTags([]) : setSelectedTags([option]);
+      isSelected(option)
+        ? setSelectedTags([])
+        : setSelectedTags([option]);
     }
   };
 
@@ -73,9 +75,9 @@ function SelectTags({
           style={{
             ...defaultStyle,
             backgroundColor: isSelected(option)
-              ? "var(--primary-color)"
-              : "var(--white-color)",
-            color: "var(--black-color)",
+              ? 'var(--primary-color)'
+              : 'var(--white-color)',
+            color: 'var(--black-color)',
           }}
           onClick={() => handleSelect(option)}
           {...props}
