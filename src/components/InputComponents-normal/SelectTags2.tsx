@@ -45,7 +45,7 @@ function SelectTags({
 
   useEffect(() => {
     onChange(selectedTags);
-  }, [selectedTags]);
+  }, [selectedTags, onChange]);
 
   const isSelected = (item: Option) =>
     selectedTags.find((option) => option.value === item.value);

@@ -65,7 +65,7 @@ const Page = () => {
             role: role || '',
             number: number || '',
         });
-    }, [logggedInUser._id, reset]);
+    }, [reset, name, username, email, avatar, role, number]);
 
     const handleProfileUpdate = async (e: any) => {
         if (!_id) {

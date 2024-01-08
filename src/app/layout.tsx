@@ -82,7 +82,7 @@ const App = ({ children }: { children: React.ReactNode }) => {
     AOS.init();
     
     !isAuthenticated && dispatch(loadUser());
-  }, [dispatch]);
+  }, [dispatch, isAuthenticated]);
 
   return (
     <Fragment>
