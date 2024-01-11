@@ -13,7 +13,7 @@ const styles = {
     top: "calc(-100% - 50px)",
     transform: "translate(-50%)",
     backgroundColor: "rgba(0,0,0, 0.8)",
-    color: "white",
+    color: "var(--black-color)",
     padding: 10,
     borderRadius: 4,
     zIndex: 1,

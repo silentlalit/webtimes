@@ -39,7 +39,14 @@ const ioHandler = async (req: NextApiRequest, res: CustomNextResponse) => {
             // pingInterval: 1000 * 60 * 5,
             // pingTimeout: 1000 * 60 * 3,
             cors: {
-              origin: '*',
+                origin: '*',
+                methods: ['GET', 'POST']        
+            },
+            connectionStateRecovery: {
+                // the backup duration of the sessions and the packets
+                maxDisconnectionDuration: 2 * 60 * 1000,
+                // whether to skip middlewares upon successful recovery
+                skipMiddlewares: true,
             }
         })
 
