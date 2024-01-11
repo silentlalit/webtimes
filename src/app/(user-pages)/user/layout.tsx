@@ -8,13 +8,19 @@ import { MdOutlineContacts } from 'react-icons/md'
 import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { usePathname } from 'next/navigation'
 
-import styles from '@/styles/userLayout.module.scss'
 import { LoadingUser, Sidebar } from '@/components'
-import { SocketProvider } from '@/providers/socketIo'
+import styles from '@/styles/userLayout.module.scss'
 import { useAppSelector } from '@/redux/hook'
 import { RootState } from '@/redux/store/store'
+// import AblyProviderContainer from '@/providers/AblyProvider'
+import { SocketProvider } from '@/providers/socketIo';
 
-const { userLayout, container, userProfileMenu } = styles
+const { userLayout, container, userProfileMenu } = styles;
+
+export const metadata = {
+    title: 'Webtimes - User',
+    description: 'user profile in webtimes for exploring more features',
+}
 
 const menu = [
     {
@@ -81,9 +87,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <Sidebar menu={menu} openMenu={openMenu} />
 
                     <SocketProvider>
+                    {/* <AblyProviderContainer> */}
                         <div className={`${container} dContainer`}>
                             {children}
                         </div>
+                    {/* </AblyProviderContainer> */}
                     </SocketProvider>
                 </Fragment>
             )}

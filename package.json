@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "debug": "node --inspect-brk ./node_modules/next/dist/bin/next"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
@@ -24,6 +25,7 @@
     "@types/react-vertical-timeline-component": "^3.3.6",
     "@types/socket.io": "^3.0.2",
     "@types/validator": "^13.11.7",
+    "ably": "^1.2.48",
     "aos": "^2.3.4",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
