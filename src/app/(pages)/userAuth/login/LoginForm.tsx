@@ -57,7 +57,10 @@ const LoginForm = () => {
   const loginUser = async (data: any) => {
     try {
       const { payload }: any = await dispatch(login(data));
-      toast.success(payload.message);
+      
+      if(payload.success){
+        toast.success(payload.message);
+      }
     } catch (error: any) {
       toast.error(error.message);
     }
