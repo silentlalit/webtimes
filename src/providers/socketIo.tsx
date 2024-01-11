@@ -116,7 +116,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
                 socket.on('end', (e: any) => {
                     console.log(e)
                 })
-                socket.disconnect()
+                socket.disconnect();
             }
         }
     }, [dispatch])

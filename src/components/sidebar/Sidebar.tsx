@@ -7,16 +7,19 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { useAppDispatch } from "@/redux/hook";
 import { logout } from "@/redux/slices/authSlice";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const { sideMenuContainer, sideMenuContainerHover, sideMenu, openMenuClass } = styles;
 
 const Sidebar = ({ menu, openMenu }: any) => {
+  const {push} = useRouter()
   const dispatch = useAppDispatch();
   const [isHover, setIsHover] = useState(false);
 
   const SignOut = async () => {
     try {
       await dispatch(logout());
+      push('/')
       
       toast.success("Logged Out.")
     } catch (error:any) {
